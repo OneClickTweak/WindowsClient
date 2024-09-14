@@ -4,6 +4,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OneClickTweak.Service", "On
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OneClickTweak.Tests", "OneClickTweak.Tests\OneClickTweak.Tests.csproj", "{952214C0-EAB7-464B-938B-CD72EA7B250A}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OneClickTweak.WindowsHandlers", "OneClickTweak.WindowsHandlers\OneClickTweak.WindowsHandlers.csproj", "{ECDFC8DE-F603-42DD-90CC-3E249D54DA58}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OneClickTweak.Settings", "OneClickTweak.Settings\OneClickTweak.Settings.csproj", "{84FE9703-CAE1-4C6C-A9C8-E3A09CB00BFC}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -18,5 +22,13 @@ Global
 		{952214C0-EAB7-464B-938B-CD72EA7B250A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{952214C0-EAB7-464B-938B-CD72EA7B250A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{952214C0-EAB7-464B-938B-CD72EA7B250A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{ECDFC8DE-F603-42DD-90CC-3E249D54DA58}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{ECDFC8DE-F603-42DD-90CC-3E249D54DA58}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{ECDFC8DE-F603-42DD-90CC-3E249D54DA58}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{ECDFC8DE-F603-42DD-90CC-3E249D54DA58}.Release|Any CPU.Build.0 = Release|Any CPU
+		{84FE9703-CAE1-4C6C-A9C8-E3A09CB00BFC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{84FE9703-CAE1-4C6C-A9C8-E3A09CB00BFC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{84FE9703-CAE1-4C6C-A9C8-E3A09CB00BFC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{84FE9703-CAE1-4C6C-A9C8-E3A09CB00BFC}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

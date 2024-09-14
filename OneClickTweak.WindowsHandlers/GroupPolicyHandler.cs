@@ -1,7 +1,8 @@
 using Microsoft.Win32;
 using OneClickTweak.Service.Settings.Handlers.GroupPolicy;
+using OneClickTweak.Settings;
 
-namespace OneClickTweak.Service.Settings.Handlers;
+namespace OneClickTweak.WindowsHandlers;
 
 public class GroupPolicyHandler : ISettingsHandler
 {

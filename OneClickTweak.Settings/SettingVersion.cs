@@ -1,4 +1,4 @@
-namespace OneClickTweak.Service.Settings;
+namespace OneClickTweak.Settings;
 
 public class SettingVersion
 {
