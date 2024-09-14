@@ -3,12 +3,17 @@ namespace OneClickTweak.Settings;
 public class SettingValue
 {
     /// <summary>
-    /// Translation name, relative to the setting translation name
+    /// Translation key relative to definition key
     /// </summary>
     public string Name { get; set; }
-
+    
     /// <summary>
-    /// Predefined value 
+    /// Setting value if inside a Setting
     /// </summary>
-    public string Value { get; set; }
+    public string? Value { get; set; }
+    
+    /// <summary>
+    /// If true, value is default
+    /// </summary>
+    public bool IsDefault { get; set; }
 }

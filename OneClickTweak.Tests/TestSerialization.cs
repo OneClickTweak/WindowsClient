@@ -18,17 +18,32 @@ public class TestSerialization
 """
 {
   "platforms": [ "Windows" ],
-  "versions": [
+  "name": "Windows.Power.Hibernate",
+  "settings": [
     {
-      "handler": "Registry",
-      "path": [ "HKLM", "SYSTEM", "CurrentControlSet", "Control", "Power" ],
-      "key": "HibernateEnabled",
-      "valueType": "Int32",
-      "values": [
-        { "name": "enabled", "value": "1" },
-        { "name": "disabled", "value": "0" }
+      "settings": [
+        {
+          "handler": "Registry",
+          "path": [ "HKLM", "SYSTEM", "CurrentControlSet", "Control", "Power" ],
+          "key": "HibernateEnabled",
+          "type": "Int32",
+          "values": [
+            { "name": "Enabled", "value": "1", "isDefault": "true" },
+            { "name": "Disabled", "value": "0" }
+          ]
+        },
+        {
+          "handler": "GPO",
+          "path": [ "GPO", "SYSTEM" ],
+          "key: "HibernateDisabled",
+          "type": "Boolean",
+          "values": [
+            { "name": "Enabled", "value": "false", "isDefault": "true" },
+            { "name": "Disabled", "value": "true" }
+          ]
+        }
       ]
-    }
+    },
   ]
 }
 """;

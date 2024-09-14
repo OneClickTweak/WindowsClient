@@ -9,6 +9,11 @@ public class SettingDefinition
     public Guid? Id { get; set; }
 
     /// <summary>
+    /// Translation key
+    /// </summary>
+    public string? Name { get; set; }
+
+    /// <summary>
     /// Platforms the setting applies to
     /// </summary>
     public ICollection<SettingPlatform> Platforms { get; set; } = Array.Empty<SettingPlatform>();
@@ -16,5 +21,5 @@ public class SettingDefinition
     /// <summary>
     /// Versions for different platform
     /// </summary>
-    public ICollection<SettingVersion> Versions { get; set; } = Array.Empty<SettingVersion>();
+    public ICollection<Setting> Settings { get; set; } = Array.Empty<Setting>();
 }
