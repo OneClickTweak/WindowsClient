@@ -1,0 +1,22 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OneClickTweak.Service", "OneClickTweak.Service\OneClickTweak.Service.csproj", "{D03516AF-6557-41CF-88D9-CB89D8E84302}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OneClickTweak.Tests", "OneClickTweak.Tests\OneClickTweak.Tests.csproj", "{952214C0-EAB7-464B-938B-CD72EA7B250A}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{D03516AF-6557-41CF-88D9-CB89D8E84302}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D03516AF-6557-41CF-88D9-CB89D8E84302}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D03516AF-6557-41CF-88D9-CB89D8E84302}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D03516AF-6557-41CF-88D9-CB89D8E84302}.Release|Any CPU.Build.0 = Release|Any CPU
+		{952214C0-EAB7-464B-938B-CD72EA7B250A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{952214C0-EAB7-464B-938B-CD72EA7B250A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{952214C0-EAB7-464B-938B-CD72EA7B250A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{952214C0-EAB7-464B-938B-CD72EA7B250A}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
