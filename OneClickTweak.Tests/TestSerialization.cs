@@ -1,26 +1,32 @@
 using System.Text.Json;
 using OneClickTweak.Settings;
+using OneClickTweak.Settings.Serialization;
 
 namespace OneClickTweak.Tests;
 
 public class TestSerialization
 {
     [Fact]
-    public void TestDeserialize()
+    public void TestSerializationComplete()
     {
-      var opts = new JsonSerializerOptions(JsonSerializerDefaults.Web);
-      var test = JsonSerializer.Deserialize<SettingDefinition>(SingleSetting, opts);
-      var json = JsonSerializer.Serialize(test, opts);
-      Assert.Equal(json, SingleSetting);
+      var test = JsonSerializer.Deserialize<SettingDefinition>(SingleSetting, SettingsSerializer.Options);
+      var json = JsonSerializer.Serialize(test, SettingsSerializer.Options);
+      Assert.Equal(GetReferenceJson(SingleSetting), json);
+    }
+
+    private string GetReferenceJson(string json)
+    {
+      var jsonObject= JsonDocument.Parse(json);
+      return JsonSerializer.Serialize(jsonObject, SettingsSerializer.Options);
     }
 
     private const string SingleSetting =
 """
 {
-  "platforms": [ "Windows" ],
   "name": "Windows.Power.Hibernate",
   "settings": [
     {
+      "platform": [ "Windows" ],
       "settings": [
         {
           "handler": "Registry",
@@ -28,22 +34,22 @@ public class TestSerialization
           "key": "HibernateEnabled",
           "type": "Int32",
           "values": [
-            { "name": "Enabled", "value": "1", "isDefault": "true" },
+            { "name": "Enabled", "value": "1", "isDefault": true },
             { "name": "Disabled", "value": "0" }
           ]
         },
         {
           "handler": "GPO",
           "path": [ "GPO", "SYSTEM" ],
-          "key: "HibernateDisabled",
+          "key": "HibernateDisabled",
           "type": "Boolean",
           "values": [
-            { "name": "Enabled", "value": "false", "isDefault": "true" },
+            { "name": "Enabled", "value": "false", "isDefault": true },
             { "name": "Disabled", "value": "true" }
           ]
         }
       ]
-    },
+    }
   ]
 }
 """;

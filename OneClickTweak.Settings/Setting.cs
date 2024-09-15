@@ -1,3 +1,6 @@
+using System.Text.Json.Serialization;
+using OneClickTweak.Settings.Serialization;
+
 namespace OneClickTweak.Settings;
 
 public class Setting
@@ -5,6 +8,7 @@ public class Setting
     /// <summary>
     /// Platforms the setting version applies to
     /// </summary>
+    [JsonConverter(typeof(JsonStringEnumArrayConverter))]
     public SettingPlatform? Platform { get; set; }
 
     /// <summary>
@@ -20,7 +24,7 @@ public class Setting
     /// <summary>
     /// Path within the handler context
     /// </summary>
-    public ICollection<string> Path { get; set; } = Array.Empty<string>();
+    public ICollection<string>? Path { get; set; }
     
     /// <summary>
     /// Value key
@@ -30,6 +34,7 @@ public class Setting
     /// <summary>
     /// Value data type
     /// </summary>
+    [JsonConverter(typeof(JsonStringEnumConverter))]
     public SettingType? Type { get; set; }
 
     /// <summary>
@@ -45,10 +50,10 @@ public class Setting
     /// <summary>
     /// More specific values
     /// </summary>
-    public ICollection<Setting> Settings { get; set; } = Array.Empty<Setting>();
+    public ICollection<Setting>? Settings { get; set; }
 
     /// <summary>
     /// Predefined possible values, if applicable
     /// </summary>
-    public ICollection<SettingValue> Values { get; set; } = Array.Empty<SettingValue>();
+    public ICollection<SettingValue>? Values { get; set; }
 }

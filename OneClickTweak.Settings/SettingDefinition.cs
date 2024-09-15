@@ -14,12 +14,7 @@ public class SettingDefinition
     public string? Name { get; set; }
 
     /// <summary>
-    /// Platforms the setting applies to
-    /// </summary>
-    public ICollection<SettingPlatform> Platforms { get; set; } = Array.Empty<SettingPlatform>();
-
-    /// <summary>
     /// Versions for different platform
     /// </summary>
-    public ICollection<Setting> Settings { get; set; } = Array.Empty<Setting>();
+    public ICollection<Setting>? Settings { get; set; }
 }

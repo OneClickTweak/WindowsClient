@@ -5,6 +5,7 @@ public enum SettingType
     String,
     ExpandString,
     MultiString,
+    Boolean,
     Binary,
     Byte,
     Word,

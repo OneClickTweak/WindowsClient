@@ -8,6 +8,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OneClickTweak.WindowsHandle
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OneClickTweak.Settings", "OneClickTweak.Settings\OneClickTweak.Settings.csproj", "{84FE9703-CAE1-4C6C-A9C8-E3A09CB00BFC}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OneClickTweak.Handlers", "OneClickTweak.Handlers\OneClickTweak.Handlers.csproj", "{1DC0B6A6-A721-451F-A535-358F176AE6A1}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -30,5 +32,9 @@ Global
 		{84FE9703-CAE1-4C6C-A9C8-E3A09CB00BFC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{84FE9703-CAE1-4C6C-A9C8-E3A09CB00BFC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{84FE9703-CAE1-4C6C-A9C8-E3A09CB00BFC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1DC0B6A6-A721-451F-A535-358F176AE6A1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1DC0B6A6-A721-451F-A535-358F176AE6A1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1DC0B6A6-A721-451F-A535-358F176AE6A1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1DC0B6A6-A721-451F-A535-358F176AE6A1}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
