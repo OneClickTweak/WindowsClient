@@ -3,12 +3,17 @@ namespace OneClickTweak.Settings;
 public class SettingValue
 {
     /// <summary>
+    /// If registered, identifier of the value
+    /// </summary>
+    public Guid? Id { get; set; }
+
+    /// <summary>
     /// Translation key relative to definition key
     /// </summary>
     public string Name { get; set; }
     
     /// <summary>
-    /// Setting value if inside a Setting
+    /// Serialized value
     /// </summary>
     public string? Value { get; set; }
     

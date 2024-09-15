@@ -3,9 +3,9 @@ using OneClickTweak.Settings;
 
 namespace OneClickTweak.WindowsHandlers;
 
-public class RegistryHandler : ISettingsHandler
+public class RegistryHandler : WindowsHandler
 {
-    public string Name => "Registry";
+    public override string Name => "Registry";
 
     private static IDictionary<SettingType, RegistryValueKind> typeMap = new Dictionary<SettingType, RegistryValueKind>
     {

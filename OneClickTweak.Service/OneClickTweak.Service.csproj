@@ -14,4 +14,10 @@
         <PackageReference Include="Microsoft.Extensions.Hosting" Version="8.0.0"/>
         <PackageReference Include="SQLite" Version="3.13.0" />
     </ItemGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\OneClickTweak.Handlers\OneClickTweak.Handlers.csproj" />
+      <ProjectReference Include="..\OneClickTweak.Settings\OneClickTweak.Settings.csproj" />
+      <ProjectReference Include="..\OneClickTweak.WindowsHandlers\OneClickTweak.WindowsHandlers.csproj" />
+    </ItemGroup>
 </Project>

@@ -30,7 +30,8 @@ public class TestSerialization
       "settings": [
         {
           "handler": "Registry",
-          "path": [ "HKLM", "SYSTEM", "CurrentControlSet", "Control", "Power" ],
+          "scope": "Machine",
+          "path": [ "SYSTEM", "CurrentControlSet", "Control", "Power" ],
           "key": "HibernateEnabled",
           "type": "Int32",
           "values": [
@@ -40,7 +41,8 @@ public class TestSerialization
         },
         {
           "handler": "GPO",
-          "path": [ "GPO", "SYSTEM" ],
+          "scope": "Machine",
+          "path": [ "SYSTEM", "Policies", "Control", "Power" ],
           "key": "HibernateDisabled",
           "type": "Boolean",
           "values": [

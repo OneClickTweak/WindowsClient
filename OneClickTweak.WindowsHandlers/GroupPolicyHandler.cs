@@ -1,12 +1,11 @@
 using Microsoft.Win32;
 using OneClickTweak.Service.Settings.Handlers.GroupPolicy;
-using OneClickTweak.Settings;
 
 namespace OneClickTweak.WindowsHandlers;
 
-public class GroupPolicyHandler : ISettingsHandler
+public class GroupPolicyHandler : WindowsHandler
 {
-    public string Name => "GPO";
+    public override string Name => "GPO";
 
     public void SetValue()
     {

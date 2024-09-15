@@ -1,10 +1,10 @@
-﻿using OneClickTweak.Settings;
+using OneClickTweak.Settings;
 
 namespace OneClickTweak.Handlers;
 
-public class SqliteHandler : ISettingsHandler
+public class FirefoxHandler : ISettingsHandler
 {
-    public string Name => "Sqlite";
+    public string Name => "Firefox";
 
     public bool IsVersionMatch(Setting item)
     {
