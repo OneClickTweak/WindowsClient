@@ -1,6 +1,6 @@
 namespace OneClickTweak.Settings;
 
-public class SettingDefinition : IHasSettings
+public record SettingDefinition : IHasSettings
 {
     /// <summary>
     /// Globally registered identifier

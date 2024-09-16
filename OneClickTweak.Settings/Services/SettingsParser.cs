@@ -2,38 +2,47 @@ namespace OneClickTweak.Settings.Services;
 
 public class SettingsParser(SettingsHandlerCollection settingsHandlers)
 {
-    public IEnumerable<SettingScope> GetScopes(SettingDefinition definition)
+    public IEnumerable<SettingScope> GetScopes(IHasSettings settings)
     {
-        return EnumerateSettings(definition).Where(x => x.Scope != null).Select(x => x.Scope!.Value).Distinct().OrderBy(x => x);
+        return EnumerateSettings(settings).Where(x => x.Scope != null).Select(x => x.Scope!.Value).Distinct().OrderBy(x => x);
     }
 
-    public IEnumerable<Setting> GetSettings(ICollection<Setting>? source, string? handler)
+    public ISettingsHandler? GetHandler(IHasSettings settings)
     {
-        if (source == null)
+        var handlers = EnumerateSettings(settings).Where(x => x.Handler != null).Select(x => x.Handler!).ToHashSet(StringComparer.OrdinalIgnoreCase);
+        if (handlers.Count == 1)
+        {
+            return settingsHandlers.GetHandler(handlers.Single());
+        }
+
+        return null;
+    }
+
+    public IEnumerable<Setting> FlattenSettings(IHasSettings source, ISettingsHandler handler, Setting? parent)
+    {
+        if (source.Settings?.Any() != true)
         {
             yield break;
         }
 
-        foreach (var item in source)
+        foreach (var item in source.Settings!)
         {
-            if (!IsSupportedPlatform(item.Platform))
+            var current = item.Copy();
+            if (parent != null)
             {
-                continue;
+                current.Merge(parent);
             }
 
-            handler ??= item.Handler;
-            if (handler != null)
+            if (item.Settings != null)
             {
-                var instance = settingsHandlers.GetHandler(handler);
-                if (instance != null && !instance.IsVersionMatch(item))
+                foreach (var subItem in FlattenSettings(item, handler, current))
                 {
-                    
+                    yield return subItem;
                 }
             }
-
-            foreach (var subItem in GetSettings(item.Settings, handler))
+            else
             {
-                yield return subItem;
+                yield return current;
             }
         }
     }

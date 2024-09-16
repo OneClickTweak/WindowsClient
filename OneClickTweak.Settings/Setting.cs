@@ -3,8 +3,32 @@ using OneClickTweak.Settings.Serialization;
 
 namespace OneClickTweak.Settings;
 
-public class Setting : IHasSettings
+public record Setting : IHasSettings
 {
+    public Setting Copy()
+    {
+        return this with
+        {
+            Settings = null,
+            Path = Path?.ToList(),
+            Values = Values?.ToList()
+        };
+    }
+    
+    public void Merge(Setting setting)
+    {
+        Platform ??= setting.Platform;
+        Name ??= setting.Name;
+        Handler ??= setting.Handler;
+        Scope ??= setting.Scope;
+        Path ??= setting.Path?.ToList();
+        Key ??= setting.Key;
+        Type ??= setting.Type;
+        MinVersion ??= setting.MinVersion;
+        MaxVersion ??= setting.MaxVersion;
+        Values ??= setting.Values?.ToList();
+    }
+
     /// <summary>
     /// Platforms the setting version applies to
     /// </summary>
@@ -15,12 +39,12 @@ public class Setting : IHasSettings
     /// Translation key relative to definition key
     /// </summary>
     public string? Name { get; set; }
-    
+
     /// <summary>
     /// Handler
     /// </summary>
     public string? Handler { get; set; }
-    
+
     /// <summary>
     /// Scope the setting applies to
     /// </summary>
@@ -31,7 +55,7 @@ public class Setting : IHasSettings
     /// Path within the handler context
     /// </summary>
     public ICollection<string>? Path { get; set; }
-    
+
     /// <summary>
     /// Value key
     /// </summary>
