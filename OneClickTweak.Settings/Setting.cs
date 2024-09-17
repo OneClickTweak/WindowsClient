@@ -5,7 +5,7 @@ namespace OneClickTweak.Settings;
 
 public record Setting : IHasSettings
 {
-    public Setting Copy()
+    public Setting CreateCopy()
     {
         return this with
         {

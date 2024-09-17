@@ -18,7 +18,7 @@ public class SettingsParser(SettingsHandlerCollection settingsHandlers)
         return null;
     }
 
-    public IEnumerable<Setting> FlattenSettings(IHasSettings source, ISettingsHandler handler, Setting? parent)
+    public IEnumerable<Setting> FlattenSettings(IHasSettings source, SettingsHandlerCollection handlers, Setting? parent)
     {
         if (source.Settings?.Any() != true)
         {
@@ -27,7 +27,7 @@ public class SettingsParser(SettingsHandlerCollection settingsHandlers)
 
         foreach (var item in source.Settings!)
         {
-            var current = item.Copy();
+            var current = item.CreateCopy();
             if (parent != null)
             {
                 current.Merge(parent);
@@ -35,7 +35,7 @@ public class SettingsParser(SettingsHandlerCollection settingsHandlers)
 
             if (item.Settings != null)
             {
-                foreach (var subItem in FlattenSettings(item, handler, current))
+                foreach (var subItem in FlattenSettings(item, handlers, current))
                 {
                     yield return subItem;
                 }

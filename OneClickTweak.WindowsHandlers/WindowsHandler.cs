@@ -2,7 +2,7 @@ using OneClickTweak.Settings;
 
 namespace OneClickTweak.WindowsHandlers;
 
-public abstract class WindowsHandler : ISettingsHandler
+public abstract class WindowsHandler
 {
     public abstract string Name { get; }
 

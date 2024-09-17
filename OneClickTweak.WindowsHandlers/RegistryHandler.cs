@@ -3,7 +3,7 @@ using OneClickTweak.Settings;
 
 namespace OneClickTweak.WindowsHandlers;
 
-public class RegistryHandler : WindowsHandler
+public class RegistryHandler : WindowsHandler, ISettingsHandler
 {
     public override string Name => "Registry";
 

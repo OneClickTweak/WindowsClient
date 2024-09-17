@@ -15,7 +15,7 @@ if (OperatingSystem.IsWindows())
     SettingsHandlerRegistry.Register<GroupPolicyHandler>();
 }
 
-builder.Services.AddSingleton<SettingsHandlerCollection>();
+builder.Services.AddSingleton(new SettingsHandlerCollection(SettingsHandlerRegistry.GetRegisteredHandlers()));
 builder.Services.AddSingleton<SettingsParser>();
 
 var host = builder.Build();
