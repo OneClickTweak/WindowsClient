@@ -10,8 +10,4 @@
       <ProjectReference Include="..\OneClickTweak.Settings\OneClickTweak.Settings.csproj" />
     </ItemGroup>
 
-    <ItemGroup>
-      <PackageReference Include="System.Management" Version="8.0.0" />
-    </ItemGroup>
-
 </Project>

@@ -1,6 +1,6 @@
-namespace OneClickTweak.Settings;
+namespace OneClickTweak.Settings.Definition;
 
-public class SettingValue
+public record SettingValue
 {
     /// <summary>
     /// If registered, identifier of the value

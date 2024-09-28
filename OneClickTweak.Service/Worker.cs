@@ -1,10 +1,14 @@
+using OneClickTweak.Service.Services;
+
 namespace OneClickTweak.Service;
 
 public class Worker : BackgroundService
 {
     private readonly ILogger<Worker> logger;
 
-    public Worker(ILogger<Worker> logger)
+    public Worker(
+        ILogger<Worker> logger,
+        LoaderService loaderService)
     {
         this.logger = logger;
     }

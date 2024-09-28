@@ -17,6 +17,7 @@
 
     <ItemGroup>
       <ProjectReference Include="..\OneClickTweak.Handlers\OneClickTweak.Handlers.csproj" />
+      <ProjectReference Include="..\OneClickTweak.LinuxHandlers\OneClickTweak.LinuxHandlers.csproj" />
       <ProjectReference Include="..\OneClickTweak.Settings\OneClickTweak.Settings.csproj" />
       <ProjectReference Include="..\OneClickTweak.WindowsHandlers\OneClickTweak.WindowsHandlers.csproj" />
     </ItemGroup>

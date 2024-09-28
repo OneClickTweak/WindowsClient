@@ -1,8 +1,11 @@
 using OneClickTweak.Settings;
+using OneClickTweak.Settings.Definition;
+using OneClickTweak.Settings.Users;
 
 namespace OneClickTweak.WindowsHandlers;
 
-public abstract class WindowsHandler
+public abstract class WindowsHandler(
+    IUserLocator locator)
 {
     public abstract string Name { get; }
 

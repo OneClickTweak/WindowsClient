@@ -1,3 +1,5 @@
+using OneClickTweak.Settings.Runtime;
+
 namespace OneClickTweak.Settings.Services;
 
 public static class SettingsHandlerRegistry

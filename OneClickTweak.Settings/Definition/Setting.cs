@@ -1,7 +1,8 @@
 using System.Text.Json.Serialization;
+using OneClickTweak.Settings.Runtime;
 using OneClickTweak.Settings.Serialization;
 
-namespace OneClickTweak.Settings;
+namespace OneClickTweak.Settings.Definition;
 
 public record Setting : IHasSettings
 {
@@ -11,7 +12,7 @@ public record Setting : IHasSettings
         {
             Settings = null,
             Path = Path?.ToList(),
-            Values = Values?.ToList()
+            Values = Values?.Select(x => x with {}).ToList()
         };
     }
     
@@ -36,7 +37,7 @@ public record Setting : IHasSettings
     public SupportedPlatform? Platform { get; set; }
 
     /// <summary>
-    /// Translation key relative to definition key
+    /// Translation key relative to definition key, or absolute if contains "."
     /// </summary>
     public string? Name { get; set; }
 

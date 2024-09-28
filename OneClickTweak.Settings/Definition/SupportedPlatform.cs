@@ -1,4 +1,4 @@
-namespace OneClickTweak.Settings;
+namespace OneClickTweak.Settings.Definition;
 
 [Flags]
 public enum SupportedPlatform

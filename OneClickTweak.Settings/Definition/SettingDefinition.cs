@@ -1,4 +1,6 @@
-namespace OneClickTweak.Settings;
+using OneClickTweak.Settings.Runtime;
+
+namespace OneClickTweak.Settings.Definition;
 
 public record SettingDefinition : IHasSettings
 {

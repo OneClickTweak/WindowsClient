@@ -1,5 +1,6 @@
 using System.Text.Json;
 using OneClickTweak.Settings;
+using OneClickTweak.Settings.Definition;
 using OneClickTweak.Settings.Serialization;
 using OneClickTweak.Settings.Services;
 using OneClickTweak.WindowsHandlers;
@@ -46,10 +47,10 @@ public class TestSettings
           "settings": [
             {
               "platform": [ "Windows" ],
+              "scope": "Machine",
               "settings": [
                 {
                   "handler": "Registry",
-                  "scope": "Machine",
                   "path": [ "SYSTEM", "CurrentControlSet", "Control", "Power" ],
                   "key": "HibernateEnabled",
                   "type": "Int32",
@@ -60,7 +61,6 @@ public class TestSettings
                 },
                 {
                   "handler": "GPO",
-                  "scope": "Machine",
                   "path": [ "SYSTEM", "Policies", "Control", "Power" ],
                   "key": "HibernateDisabled",
                   "type": "Boolean",
