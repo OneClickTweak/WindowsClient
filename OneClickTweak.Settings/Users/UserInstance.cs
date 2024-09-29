@@ -2,9 +2,11 @@ namespace OneClickTweak.Settings.Users;
 
 public class UserInstance
 {
-    public string Name { get; set; }
+    public required string Id { get; init; }
 
-    public string LocalPath { get; set; }
+    public required string Name { get; init; }
 
-    public bool IsCurrent { get; set; }
+    public required string LocalPath { get; init; }
+
+    public bool IsCurrent { get; init; }
 }

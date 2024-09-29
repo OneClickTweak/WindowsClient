@@ -3,6 +3,7 @@ using OneClickTweak.LinuxHandlers;
 using OneClickTweak.Service;
 using OneClickTweak.Service.Services;
 using OneClickTweak.Settings.Services;
+using OneClickTweak.Settings.Users;
 using OneClickTweak.WindowsHandlers;
 
 var builder = Host.CreateApplicationBuilder(args);
@@ -10,11 +11,11 @@ builder.Services.AddHostedService<Worker>();
 
 if (OperatingSystem.IsWindows())
 {
-    builder.Services.AddSingleton<WindowsUserLocator>();
+    builder.Services.AddSingleton<IUserLocator, WindowsUserLocator>();
 }
 else if (OperatingSystem.IsLinux())
 {
-    builder.Services.AddSingleton<LinuxUserLocator>();
+    builder.Services.AddSingleton<IUserLocator, LinuxUserLocator>();
 }
 
 SettingsHandlerRegistry.Register<FirefoxHandler>();

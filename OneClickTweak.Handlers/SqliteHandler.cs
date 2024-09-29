@@ -1,5 +1,4 @@
-﻿using OneClickTweak.Settings;
-using OneClickTweak.Settings.Definition;
+﻿using OneClickTweak.Settings.Definition;
 using OneClickTweak.Settings.Runtime;
 
 namespace OneClickTweak.Handlers;

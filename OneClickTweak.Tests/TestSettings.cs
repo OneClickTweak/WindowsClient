@@ -1,5 +1,4 @@
 using System.Text.Json;
-using OneClickTweak.Settings;
 using OneClickTweak.Settings.Definition;
 using OneClickTweak.Settings.Serialization;
 using OneClickTweak.Settings.Services;

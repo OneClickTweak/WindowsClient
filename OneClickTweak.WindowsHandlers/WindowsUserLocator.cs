@@ -1,5 +1,5 @@
-using System.Collections;
 using System.Management;
+using System.Security.Principal;
 using OneClickTweak.Settings.Users;
 
 namespace OneClickTweak.WindowsHandlers;
@@ -8,23 +8,46 @@ public class WindowsUserLocator : IUserLocator
 {
     public Task<ICollection<UserInstance>> GetUsers()
     {
-        var currentPath = Environment.GetFolderPath(Environment.SpecialFolder.UserProfile);
-        var query = new SelectQuery("Win32_UserAccount", $"domain='{Environment.MachineName}'");
-        var searcher = new ManagementObjectSearcher(query);
+        var currentSid = WindowsIdentity.GetCurrent().Owner?.ToString();
         var users = new List<UserInstance>();
-        foreach (var envVar in searcher.Get())
+        var userPaths = GetUserPaths();
+        var query = new SelectQuery("Win32_UserAccount", $"SIDType = 1 AND AccountType = 512", [ "SID", "Name" ]);
+        var searcher = new ManagementObjectSearcher(query);
+        foreach (var item in searcher.Get())
         {
-            var name = Convert.ToString(envVar["Name"]);
-            var localPath = Convert.ToString(envVar["LocalPath"]);
-            users.Add(new UserInstance
+            var sid = Convert.ToString(item["SID"]);
+            if (sid != null && userPaths.TryGetValue(sid, out var path))
             {
-                Name = name ?? string.Empty,
-                LocalPath = localPath ?? string.Empty,
-                IsCurrent = currentPath == localPath
-            });
+                var name = Convert.ToString(item["Name"]);
+                users.Add(new UserInstance
+                {
+                    Id = sid,
+                    Name = name ?? sid,
+                    LocalPath = path,
+                    IsCurrent = currentSid == sid
+                });
+            }
         }
 
         return Task.FromResult<ICollection<UserInstance>>(users);
+    }
+
+    private Dictionary<string, string> GetUserPaths()
+    {
+        var userPaths = new Dictionary<string, string>();
+        var query = new SelectQuery("Win32_UserProfile", null, [ "SID", "LocalPath" ]);
+        var searcher = new ManagementObjectSearcher(query);
+        foreach (var item in searcher.Get())
+        {
+            var sid = Convert.ToString(item["SID"]);
+            var path = Convert.ToString(item["LocalPath"]);
+            if (sid != null && path != null)
+            {
+                userPaths[sid] = path;
+            }
+        }
+
+        return userPaths;
     }
 
     public Task<IEnumerable<UserInstance>> GetUserInstances()

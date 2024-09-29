@@ -5,7 +5,7 @@ using OneClickTweak.Settings.Users;
 
 namespace OneClickTweak.WindowsHandlers;
 
-public class RegistryHandler(IUserLocator locator) : WindowsHandler(locator), ISettingsHandler
+public class RegistryHandler : WindowsHandler, ISettingsHandler
 {
     public override string Name => "Registry";
     
