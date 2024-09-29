@@ -8,5 +8,7 @@ public class UserInstance
 
     public required string LocalPath { get; init; }
 
-    public bool IsCurrent { get; init; }
+    public required bool IsCurrent { get; init; }
+    
+    public required bool CanWrite { get; init; }
 }

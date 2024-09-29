@@ -1,3 +1,4 @@
+using OneClickTweak.Settings.Filesystem;
 using OneClickTweak.Settings.Users;
 
 namespace OneClickTweak.LinuxHandlers;
@@ -22,7 +23,8 @@ public class LinuxUserLocator : IUserLocator
                         Id = splitLine[2],
                         Name = splitLine[0],
                         LocalPath = userDir,
-                        IsCurrent = Environment.UserName == splitLine[0]
+                        IsCurrent = Environment.UserName == splitLine[0],
+                        CanWrite = FilesystemHelpers.IsDirectoryWritable(userDir)
                     });
                 }
             }

@@ -1,5 +1,6 @@
 using System.Management;
 using System.Security.Principal;
+using OneClickTweak.Settings.Filesystem;
 using OneClickTweak.Settings.Users;
 
 namespace OneClickTweak.WindowsHandlers;
@@ -24,7 +25,8 @@ public class WindowsUserLocator : IUserLocator
                     Id = sid,
                     Name = name ?? sid,
                     LocalPath = path,
-                    IsCurrent = currentSid == sid
+                    IsCurrent = currentSid == sid,
+                    CanWrite = FilesystemHelpers.IsDirectoryWritable(path)
                 });
             }
         }
