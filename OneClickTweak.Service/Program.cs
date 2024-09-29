@@ -11,11 +11,21 @@ builder.Services.AddHostedService<Worker>();
 
 if (OperatingSystem.IsWindows())
 {
-    builder.Services.AddSingleton<IUserLocator, WindowsUserLocator>();
+    builder.Services.AddSingleton<IUserLocator, WindowsUserLocator>(x =>
+    {
+        var locator = new WindowsUserLocator();
+        builder.Configuration.GetSection(nameof(WindowsUserLocator)).Bind(locator);
+        return locator;
+    });
 }
 else if (OperatingSystem.IsLinux())
 {
-    builder.Services.AddSingleton<IUserLocator, LinuxUserLocator>();
+    builder.Services.AddSingleton<IUserLocator, LinuxUserLocator>(x =>
+    {
+        var locator = new LinuxUserLocator();
+        builder.Configuration.GetSection(nameof(LinuxUserLocator)).Bind(locator);
+        return locator;
+    });
 }
 
 SettingsHandlerRegistry.Register<FirefoxHandler>(x => builder.Configuration.GetSection(nameof(FirefoxHandler)).Bind(x));
