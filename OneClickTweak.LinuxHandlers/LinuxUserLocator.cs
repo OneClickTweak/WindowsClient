@@ -5,11 +5,11 @@ namespace OneClickTweak.LinuxHandlers;
 
 public class LinuxUserLocator : IUserLocator
 {
-    public Task<ICollection<UserInstance>> GetUsers()
+    public async Task<ICollection<UserInstance>> GetUsers()
     {
         var result = new List<UserInstance>();
-        var users = Directory.GetDirectories("/home");
-        var passwd = File.ReadAllLines("/etc/passwd");
+        var users = Directory.EnumerateDirectories("/home");
+        var passwd = await File.ReadAllLinesAsync("/etc/passwd");
         foreach (var userDir in users)
         {
             var userLines = passwd.Where(x => x.Contains($":{userDir}:")).ToArray();
@@ -30,6 +30,6 @@ public class LinuxUserLocator : IUserLocator
             }
         }
 
-        return Task.FromResult<ICollection<UserInstance>>(result);
+        return result;
     }
 }

@@ -22,9 +22,9 @@ public class TestSettings
         var test = JsonSerializer.Deserialize<SettingDefinition>(SingleSetting, SettingsSerializer.Options);
         Assert.NotNull(test);
 
+        SettingsHandlerRegistry.Register<RegistryHandler>();
+        SettingsHandlerRegistry.Register<GroupPolicyHandler>();
         var handlers = new SettingsHandlerCollection();
-        handlers.Register(typeof(RegistryHandler));
-        handlers.Register(typeof(GroupPolicyHandler));
 
         var parser = new SettingsParser(handlers);
         var flat = parser.FlattenSettings(test, handlers, null);

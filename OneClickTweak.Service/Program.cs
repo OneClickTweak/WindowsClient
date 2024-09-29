@@ -18,16 +18,16 @@ else if (OperatingSystem.IsLinux())
     builder.Services.AddSingleton<IUserLocator, LinuxUserLocator>();
 }
 
-SettingsHandlerRegistry.Register<FirefoxHandler>();
-SettingsHandlerRegistry.Register<SqliteHandler>();
+SettingsHandlerRegistry.Register<FirefoxHandler>(x => builder.Configuration.GetSection(nameof(FirefoxHandler)).Bind(x));
+SettingsHandlerRegistry.Register<SqliteHandler>(x => builder.Configuration.GetSection(nameof(SqliteHandler)).Bind(x));
 
 if (OperatingSystem.IsWindows())
 {
-    SettingsHandlerRegistry.Register<RegistryHandler>();
-    SettingsHandlerRegistry.Register<GroupPolicyHandler>();
+    SettingsHandlerRegistry.Register<RegistryHandler>(x => builder.Configuration.GetSection(nameof(RegistryHandler)).Bind(x));
+    SettingsHandlerRegistry.Register<GroupPolicyHandler>(x => builder.Configuration.GetSection(nameof(GroupPolicyHandler)).Bind(x));
 }
 
-builder.Services.AddSingleton(new SettingsHandlerCollection(SettingsHandlerRegistry.GetRegisteredHandlers()));
+builder.Services.AddSingleton(new SettingsHandlerCollection());
 builder.Services.AddSingleton<SettingsParser>();
 builder.Services.AddSingleton<LoaderService>();
 

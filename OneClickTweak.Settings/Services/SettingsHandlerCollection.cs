@@ -8,31 +8,28 @@ public class SettingsHandlerCollection
 
     public SettingsHandlerCollection()
     {
-    }
-
-    public SettingsHandlerCollection(IEnumerable<Type> handlerTypes)
-    {
-        foreach (var handlerType in handlerTypes)
+        foreach (var handler in SettingsHandlerRegistry.Handlers)
         {
-            Register(handlerType);
+            Register(handler);
         }
     }
 
-    public ISettingsHandler Register(Type handlerType)
+    public void Register(SettingsRegistryItem handlerRegistration)
     {
-        var instance = Activator.CreateInstance(handlerType);
+        var instance = Activator.CreateInstance(handlerRegistration.Type);
         if (instance is ISettingsHandler handler)
         {
             if (handlers.TryGetValue(handler.Name, out var existingHandler))
             {
-                return existingHandler;
+                return;
             }
 
+            handlerRegistration.ConfigurationAction?.Invoke(handler);
             handlers.Add(handler.Name, handler);
-            return handler;
+            return;
         }
 
-        throw new ArgumentException($"Type '{handlerType.FullName}' does not implement ISettingsHandler interface.");
+        throw new ArgumentException($"Type '{handlerRegistration.Type.FullName}' does not implement ISettingsHandler interface.");
     }
 
     public ISettingsHandler? GetHandler(string handlerName)
