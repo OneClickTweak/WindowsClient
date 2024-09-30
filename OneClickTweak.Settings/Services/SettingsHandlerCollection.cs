@@ -36,4 +36,9 @@ public class SettingsHandlerCollection
     {
         return handlers.TryGetValue(handlerName, out var handler) ? handler : null;
     }
+
+    public IEnumerable<ISettingsHandler> GetHandlers()
+    {
+        return handlers.Values;
+    }
 }

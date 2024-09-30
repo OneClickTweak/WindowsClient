@@ -5,6 +5,8 @@ namespace OneClickTweak.Settings.Runtime;
 public interface ISettingsHandler
 {
     string Name { get; }
+    
+    int ChangeTimeout { get; set; }
 
     bool IsVersionMatch(Setting item);
 

@@ -1,13 +1,12 @@
 using System.Management;
 using System.Security.Principal;
-using OneClickTweak.Settings.Filesystem;
 using OneClickTweak.Settings.Users;
 
 namespace OneClickTweak.WindowsHandlers;
 
 public class WindowsUserLocator : IUserLocator
 {
-    public Task<ICollection<UserInstance>> GetUsers()
+    public Task<ICollection<UserInstance>> GetUsersAsync(CancellationToken cancellationToken)
     {
         var currentSid = WindowsIdentity.GetCurrent().Owner?.ToString();
         var users = new List<UserInstance>();
@@ -25,8 +24,7 @@ public class WindowsUserLocator : IUserLocator
                     Id = sid,
                     Name = name ?? sid,
                     LocalPath = path,
-                    IsCurrent = currentSid == sid,
-                    CanWrite = FilesystemHelpers.IsDirectoryWritable(path)
+                    IsCurrent = currentSid == sid
                 });
             }
         }

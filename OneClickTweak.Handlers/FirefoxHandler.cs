@@ -3,7 +3,7 @@ using OneClickTweak.Settings.Runtime;
 
 namespace OneClickTweak.Handlers;
 
-public class FirefoxHandler : ISettingsHandler
+public class FirefoxHandler : BaseHandler, ISettingsHandler
 {
     public string Name => "Firefox";
 

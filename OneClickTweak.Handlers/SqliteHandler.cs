@@ -3,7 +3,7 @@ using OneClickTweak.Settings.Runtime;
 
 namespace OneClickTweak.Handlers;
 
-public class SqliteHandler : ISettingsHandler
+public class SqliteHandler : BaseHandler, ISettingsHandler
 {
     public string Name => "Sqlite";
 

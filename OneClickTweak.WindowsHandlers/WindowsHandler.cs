@@ -1,8 +1,9 @@
+using OneClickTweak.Handlers;
 using OneClickTweak.Settings.Definition;
 
 namespace OneClickTweak.WindowsHandlers;
 
-public abstract class WindowsHandler
+public abstract class WindowsHandler : BaseHandler
 {
     public abstract string Name { get; }
 
