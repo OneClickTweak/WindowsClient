@@ -1,7 +1,7 @@
 using OneClickTweak.Handlers;
 using OneClickTweak.Settings.Definition;
 
-namespace OneClickTweak.WindowsHandlers;
+namespace OneClickTweak.WindowsHandlers.Windows;
 
 public abstract class WindowsHandler : BaseHandler
 {

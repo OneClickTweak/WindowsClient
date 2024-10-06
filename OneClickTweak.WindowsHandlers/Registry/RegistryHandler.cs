@@ -2,8 +2,9 @@ using Microsoft.Win32;
 using OneClickTweak.Settings.Definition;
 using OneClickTweak.Settings.Runtime;
 using OneClickTweak.Settings.Users;
+using OneClickTweak.WindowsHandlers.Windows;
 
-namespace OneClickTweak.WindowsHandlers;
+namespace OneClickTweak.WindowsHandlers.Registry;
 
 public class RegistryHandler : WindowsHandler, ISettingsHandler
 {

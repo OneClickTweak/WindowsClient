@@ -2,7 +2,8 @@ using System.Text.Json;
 using OneClickTweak.Settings.Definition;
 using OneClickTweak.Settings.Serialization;
 using OneClickTweak.Settings.Services;
-using OneClickTweak.WindowsHandlers;
+using OneClickTweak.WindowsHandlers.GroupPolicy;
+using OneClickTweak.WindowsHandlers.Registry;
 
 namespace OneClickTweak.Tests;
 

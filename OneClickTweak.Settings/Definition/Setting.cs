@@ -12,7 +12,8 @@ public record Setting : IHasSettings
         {
             Settings = null,
             Path = Path?.ToList(),
-            Values = Values?.Select(x => x with {}).ToList()
+            Values = Values?.Select(x => x with {}).ToList(),
+            Options = Options.ToDictionary(StringComparer.OrdinalIgnoreCase)
         };
     }
     
@@ -28,6 +29,13 @@ public record Setting : IHasSettings
         MinVersion ??= setting.MinVersion;
         MaxVersion ??= setting.MaxVersion;
         Values ??= setting.Values?.ToList();
+        foreach (var option in setting.Options)
+        {
+            if (!Options.TryGetValue(option.Key, out var optionValue) || string.IsNullOrEmpty(optionValue))
+            {
+                Options[option.Key] = option.Value;
+            }
+        }
     }
 
     /// <summary>
@@ -87,4 +95,9 @@ public record Setting : IHasSettings
     /// Predefined possible values, if applicable
     /// </summary>
     public ICollection<SettingValue>? Values { get; set; }
+    
+    /// <summary>
+    /// Custom options used by handler
+    /// </summary>
+    public IDictionary<string, string> Options { get; set; } = new Dictionary<string, string>(StringComparer.OrdinalIgnoreCase);
 }

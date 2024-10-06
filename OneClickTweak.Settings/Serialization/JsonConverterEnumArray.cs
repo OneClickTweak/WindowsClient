@@ -81,9 +81,7 @@ internal class JsonConverterEnumArray<T> : JsonConverter<T>
     public override void Write(Utf8JsonWriter writer, T value, JsonSerializerOptions options)
     {
         var enumString = value.ToString().Split(',');
-
         writer.WriteStartArray();
-
         foreach (var enumValue in enumString)
         {
             writer.WriteStringValue(enumValue.TrimStart());

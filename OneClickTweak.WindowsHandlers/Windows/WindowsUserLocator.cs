@@ -2,7 +2,7 @@ using System.Management;
 using System.Security.Principal;
 using OneClickTweak.Settings.Users;
 
-namespace OneClickTweak.WindowsHandlers;
+namespace OneClickTweak.WindowsHandlers.Windows;
 
 public class WindowsUserLocator : IUserLocator
 {

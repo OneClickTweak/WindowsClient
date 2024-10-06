@@ -1,7 +1,7 @@
 ﻿using OneClickTweak.Settings.Definition;
 using OneClickTweak.Settings.Runtime;
 
-namespace OneClickTweak.Handlers;
+namespace OneClickTweak.Handlers.Sqlite;
 
 public class SqliteHandler : BaseHandler, ISettingsHandler
 {

@@ -1,10 +1,13 @@
-using OneClickTweak.Handlers;
+using OneClickTweak.Handlers.Firefox;
+using OneClickTweak.Handlers.Sqlite;
 using OneClickTweak.LinuxHandlers;
 using OneClickTweak.Service;
 using OneClickTweak.Service.Services;
 using OneClickTweak.Settings.Services;
 using OneClickTweak.Settings.Users;
-using OneClickTweak.WindowsHandlers;
+using OneClickTweak.WindowsHandlers.GroupPolicy;
+using OneClickTweak.WindowsHandlers.Registry;
+using OneClickTweak.WindowsHandlers.Windows;
 
 var builder = Host.CreateApplicationBuilder(args);
 builder.Services.AddHostedService<Worker>();

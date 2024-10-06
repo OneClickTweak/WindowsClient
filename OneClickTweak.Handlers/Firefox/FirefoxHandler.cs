@@ -1,7 +1,7 @@
 using OneClickTweak.Settings.Definition;
 using OneClickTweak.Settings.Runtime;
 
-namespace OneClickTweak.Handlers;
+namespace OneClickTweak.Handlers.Firefox;
 
 public class FirefoxHandler : BaseHandler, ISettingsHandler
 {
