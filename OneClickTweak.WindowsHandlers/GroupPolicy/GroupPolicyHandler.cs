@@ -1,5 +1,4 @@
 using Microsoft.Win32;
-using OneClickTweak.Service.Settings.Handlers.GroupPolicy;
 using OneClickTweak.Settings.Runtime;
 using OneClickTweak.WindowsHandlers.Windows;
 

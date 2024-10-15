@@ -4,7 +4,7 @@ using System.Text;
 using Microsoft.Win32;
 using Microsoft.Win32.SafeHandles;
 
-namespace OneClickTweak.Service.Settings.Handlers.GroupPolicy;
+namespace OneClickTweak.WindowsHandlers.GroupPolicy;
 
 [ComImport, Guid("EA502722-A23D-11d1-A7D3-0000F87571E3")]
 internal class GPClass

@@ -28,4 +28,10 @@
       <ProjectReference Include="..\OneClickTweak.WindowsHandlers\OneClickTweak.WindowsHandlers.csproj" />
     </ItemGroup>
 
+    <ItemGroup>
+        <None
+                Include="TestFiles\**"
+                CopyToOutputDirectory="PreserveNewest"
+                LinkBase="TestFiles\" />
+    </ItemGroup>
 </Project>
