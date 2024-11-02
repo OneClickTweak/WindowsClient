@@ -12,11 +12,11 @@ public record Setting : IHasSettings
         {
             Settings = null,
             Path = Path?.ToList(),
-            Values = Values?.Select(x => x with {}).ToList(),
+            Values = Values?.Select(x => x with { }).ToList(),
             Options = Options.ToDictionary(StringComparer.OrdinalIgnoreCase)
         };
     }
-    
+
     public void Merge(Setting setting)
     {
         Platform ??= setting.Platform;
@@ -87,15 +87,15 @@ public record Setting : IHasSettings
     public string? MaxVersion { get; set; }
 
     /// <summary>
-    /// More specific values
+    /// Nested merged specific values
     /// </summary>
     public ICollection<Setting>? Settings { get; set; }
 
     /// <summary>
-    /// Predefined possible values, if applicable
+    /// Predefined possible value choices, if applicable
     /// </summary>
     public ICollection<SettingValue>? Values { get; set; }
-    
+
     /// <summary>
     /// Custom options used by handler
     /// </summary>

@@ -5,10 +5,11 @@ using System.Text.RegularExpressions;
 using OneClickTweak.Settings.Definition;
 using OneClickTweak.Settings.Serialization;
 using OneClickTweak.Tests.WinUtilImport;
+using Xunit.Abstractions;
 
 namespace OneClickTweak.Tests;
 
-public class TestLoadDefinitions
+public class TestLoadDefinitions(ITestOutputHelper outputHelper)
 {
     private static Regex FixupRegex = new Regex("""("(InvokeScript|UndoScript)":\s*\[[\r\n\s]*)([\r\n\s]*"[^"\\]*(?:\\.[^"\\]*)*"[\r\n\s]*,?[\r\n\s]*)+""", RegexOptions.Compiled | RegexOptions.Multiline | RegexOptions.Singleline);
 
@@ -42,5 +43,9 @@ public class TestLoadDefinitions
         };
 
         var test = JsonSerializer.Deserialize<WinUtilEntries>(fixedJson, options);
+        foreach (var item in test)
+        {
+            outputHelper.WriteLine($"{item.Key}: {item.Value.Description}");
+        }
     }
 }

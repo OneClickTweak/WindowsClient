@@ -8,7 +8,7 @@ public interface ISettingsHandler
     
     int ChangeTimeout { get; set; }
 
-    bool IsVersionMatch(Setting item);
+    bool IsVersionMatch(SettingsInstance instance, Setting item);
 
     IEnumerable<SettingScope> GetScopes() => AllScopes;
 

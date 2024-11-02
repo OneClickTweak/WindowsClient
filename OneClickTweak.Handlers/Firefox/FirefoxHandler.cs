@@ -1,13 +1,11 @@
-using OneClickTweak.Settings.Definition;
 using OneClickTweak.Settings.Runtime;
+using OneClickTweak.Settings.Users;
 
 namespace OneClickTweak.Handlers.Firefox;
 
-public class FirefoxHandler : BaseHandler, ISettingsHandler
+public class FirefoxHandler() : BaseHandler("Firefox")
 {
-    public string Name => "Firefox";
-
-    public bool IsVersionMatch(Setting item)
+    public override IEnumerable<SettingsInstance> GetFoundInstances(IEnumerable<UserInstance> users)
     {
         throw new NotImplementedException();
     }

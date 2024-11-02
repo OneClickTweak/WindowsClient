@@ -16,6 +16,7 @@
     </ItemGroup>
 
     <ItemGroup>
+      <ProjectReference Include="..\OneClickTweak.AndroidHandlers\OneClickTweak.AndroidHandlers.csproj" />
       <ProjectReference Include="..\OneClickTweak.Handlers\OneClickTweak.Handlers.csproj" />
       <ProjectReference Include="..\OneClickTweak.LinuxHandlers\OneClickTweak.LinuxHandlers.csproj" />
       <ProjectReference Include="..\OneClickTweak.Settings\OneClickTweak.Settings.csproj" />

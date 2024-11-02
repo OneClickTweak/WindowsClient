@@ -6,7 +6,7 @@ public enum SettingType
     ExpandString,
     MultiString,
     Boolean,
-    Binary,
+    Bytes,
     Byte,
     Word,
     Int32,

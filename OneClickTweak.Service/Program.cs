@@ -1,5 +1,5 @@
+using OneClickTweak.AndroidHandlers;
 using OneClickTweak.Handlers.Firefox;
-using OneClickTweak.Handlers.Sqlite;
 using OneClickTweak.LinuxHandlers;
 using OneClickTweak.Service;
 using OneClickTweak.Service.Services;
@@ -33,7 +33,7 @@ else if (OperatingSystem.IsLinux())
 }
 
 SettingsHandlerRegistry.Register<FirefoxHandler>(x => builder.Configuration.GetSection(nameof(FirefoxHandler)).Bind(x));
-SettingsHandlerRegistry.Register<SqliteHandler>(x => builder.Configuration.GetSection(nameof(SqliteHandler)).Bind(x));
+SettingsHandlerRegistry.Register<AdbHandler>(x => builder.Configuration.GetSection(nameof(AdbHandler)).Bind(x));
 
 if (OperatingSystem.IsWindows())
 {
