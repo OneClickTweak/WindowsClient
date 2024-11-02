@@ -16,20 +16,19 @@ public class SettingsHandlerCollection
 
     public void Register(SettingsRegistryItem handlerRegistration)
     {
-        var instance = Activator.CreateInstance(handlerRegistration.Type);
-        if (instance is ISettingsHandler handler)
+        var handler = handlerRegistration.CreateAction();
+        if (handler == null)
         {
-            if (handlers.TryGetValue(handler.Name, out var existingHandler))
-            {
-                return;
-            }
+            throw new ArgumentException($"Type '{handlerRegistration.Type.FullName}' does not implement ISettingsHandler interface.");
+        }
 
-            handlerRegistration.ConfigurationAction?.Invoke(handler);
-            handlers.Add(handler.Name, handler);
+        if (handlers.TryGetValue(handler.Name, out var existingHandler))
+        {
             return;
         }
 
-        throw new ArgumentException($"Type '{handlerRegistration.Type.FullName}' does not implement ISettingsHandler interface.");
+        handlerRegistration.ConfigureAction?.Invoke(handler);
+        handlers.Add(handler.Name, handler);
     }
 
     public ISettingsHandler? GetHandler(string handlerName)

@@ -23,8 +23,8 @@ public class TestSettings
         var test = JsonSerializer.Deserialize<SettingDefinition>(SingleSetting, SettingsSerializer.Options);
         Assert.NotNull(test);
 
-        SettingsHandlerRegistry.Register<RegistryHandler>();
-        SettingsHandlerRegistry.Register<GroupPolicyHandler>();
+        SettingsHandlerRegistry.Register(() => new RegistryHandler());
+        SettingsHandlerRegistry.Register(() => new GroupPolicyHandler());
         var handlers = new SettingsHandlerCollection();
 
         var parser = new SettingsParser(handlers);

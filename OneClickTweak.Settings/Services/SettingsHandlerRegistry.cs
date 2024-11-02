@@ -6,9 +6,9 @@ public static class SettingsHandlerRegistry
 {
     public static readonly ICollection<SettingsRegistryItem> Handlers = new List<SettingsRegistryItem>();
 
-    public static void Register<THandler>(Action<object>? configurationAction = null)
+    public static void Register<THandler>(Func<THandler> createFunc, Action<object>? configurationAction = null)
         where THandler : class, ISettingsHandler
     {
-        Handlers.Add(new SettingsRegistryItem(typeof(THandler), configurationAction));
+        Handlers.Add(new SettingsRegistryItem(typeof(THandler), createFunc, configurationAction));
     }
 }

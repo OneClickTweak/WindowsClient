@@ -32,13 +32,13 @@ else if (OperatingSystem.IsLinux())
     });
 }
 
-SettingsHandlerRegistry.Register<FirefoxHandler>(x => builder.Configuration.GetSection(nameof(FirefoxHandler)).Bind(x));
-SettingsHandlerRegistry.Register<AdbHandler>(x => builder.Configuration.GetSection(nameof(AdbHandler)).Bind(x));
+SettingsHandlerRegistry.Register(() => new FirefoxHandler(), x => builder.Configuration.GetSection(nameof(FirefoxHandler)).Bind(x));
+SettingsHandlerRegistry.Register(() => new AdbHandler(), x => builder.Configuration.GetSection(nameof(AdbHandler)).Bind(x));
 
 if (OperatingSystem.IsWindows())
 {
-    SettingsHandlerRegistry.Register<RegistryHandler>(x => builder.Configuration.GetSection(nameof(RegistryHandler)).Bind(x));
-    SettingsHandlerRegistry.Register<GroupPolicyHandler>(x => builder.Configuration.GetSection(nameof(GroupPolicyHandler)).Bind(x));
+    SettingsHandlerRegistry.Register(() => new RegistryHandler(), x => builder.Configuration.GetSection(nameof(RegistryHandler)).Bind(x));
+    SettingsHandlerRegistry.Register(() => new GroupPolicyHandler(), x => builder.Configuration.GetSection(nameof(GroupPolicyHandler)).Bind(x));
 }
 
 builder.Services.AddSingleton(new SettingsHandlerCollection());
