@@ -2,6 +2,7 @@
   {
     "platform": [ "Windows" ],
     "name": [ "Windows", "Power", "Hibernate" ],
+    "tags": [ "Power" ],
     "scope": "Machine",
     "settings": [
       {

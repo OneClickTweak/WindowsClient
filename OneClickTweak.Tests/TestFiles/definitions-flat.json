@@ -2,6 +2,7 @@
   {
     "platform": [ "Windows" ],
     "name": [ "Windows", "Power", "Hibernate", "Registry" ],
+    "tags": [ "Power" ],
     "handler": "Registry",
     "scope": "Machine",
     "path": [ "SYSTEM", "CurrentControlSet", "Control", "Power" ],
@@ -15,6 +16,7 @@
   {
     "platform": [ "Windows" ],
     "name": [ "Windows", "Power", "Hibernate", "GPO" ],
+    "tags": [ "Power" ],
     "handler": "GPO",
     "scope": "Machine",
     "path": [ "SYSTEM", "Policies", "Control", "Power" ],

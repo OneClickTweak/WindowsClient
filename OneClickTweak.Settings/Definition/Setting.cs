@@ -20,6 +20,7 @@ public record Setting
     {
         Platform ??= setting.Platform;
         Name = setting.Name.Concat(Name).ToList();
+        Tags = (setting.Tags ?? []).Concat(Tags ?? []).ToHashSet();
         Handler ??= setting.Handler;
         Scope ??= setting.Scope;
         Path ??= setting.Path?.ToList();
@@ -47,6 +48,11 @@ public record Setting
     /// Translation key relative to definition key, or absolute if contains "."
     /// </summary>
     public required ICollection<string> Name { get; set; }
+    
+    /// <summary>
+    /// Tags used to describe the setting
+    /// </summary>
+    public HashSet<string>? Tags { get; set; }
 
     /// <summary>
     /// Handler

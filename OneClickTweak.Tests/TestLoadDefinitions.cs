@@ -21,8 +21,8 @@ public class TestLoadDefinitions(ITestOutputHelper outputHelper)
         var test = JsonSerializer.Deserialize<Setting[]>(stream, SettingsSerializer.Options);
         Assert.NotNull(test);
         Assert.Equal(1, test.Length);
-    }    
-    
+    }
+
     [Fact]
     public void TestImportWinUtil()
     {
@@ -45,9 +45,20 @@ public class TestLoadDefinitions(ITestOutputHelper outputHelper)
         };
 
         var test = JsonSerializer.Deserialize<WinUtilEntries>(fixedJson, options);
-        foreach (var item in test)
+        Assert.NotNull(test);
+        var converter = new WinUtilConverter();
+        var settings = new List<Setting>(); 
+        foreach (var (key, entry) in test.OrderBy(x => x.Value.Order))
         {
-            outputHelper.WriteLine($"{item.Key}: {item.Value.Description}");
+            outputHelper.WriteLine($"{key}: {entry.Description}");
+            if (converter.CanConvert(key, entry))
+            {
+                settings.Add(converter.Convert(key, entry));
+            }
         }
+        
+        var settingsFile = Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location)!, "TestFiles", "settings.json");
+        var settingsJson = JsonSerializer.Serialize(settings, SettingsSerializer.Options);
+        File.WriteAllText(settingsFile, settingsJson);
     }
 }
