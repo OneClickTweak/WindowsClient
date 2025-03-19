@@ -5,14 +5,14 @@ namespace OneClickTweak.Settings.Services;
 
 public class SettingsParser(SettingsHandlerCollection settingsHandlers)
 {
-    public IEnumerable<SettingScope> GetScopes(IHasSettings settings)
+    public IEnumerable<SettingScope> GetScopes(ICollection<Setting> settings)
     {
-        return EnumerateSettings(settings).Where(x => x.Scope != null).Select(x => x.Scope!.Value).Distinct().OrderBy(x => x);
+        return settings.SelectMany(EnumerateDeep).Where(x => x.Scope != null).Select(x => x.Scope!.Value).Distinct().OrderBy(x => x);
     }
 
-    public ISettingsHandler? GetHandler(IHasSettings settings)
+    public ISettingsHandler? GetHandler(Setting settings)
     {
-        var handlers = EnumerateSettings(settings).Where(x => x.Handler != null).Select(x => x.Handler!).ToHashSet(StringComparer.OrdinalIgnoreCase);
+        var handlers = EnumerateDeep(settings).Where(x => x.Handler != null).Select(x => x.Handler!).ToHashSet(StringComparer.OrdinalIgnoreCase);
         if (handlers.Count == 1)
         {
             return settingsHandlers.GetHandler(handlers.Single());
@@ -21,37 +21,36 @@ public class SettingsParser(SettingsHandlerCollection settingsHandlers)
         return null;
     }
 
-    public IEnumerable<Setting> FlattenSettings(IHasSettings source, SettingsHandlerCollection handlers, Setting? parent)
+    public IEnumerable<Setting> FlattenSettings(Setting source, SettingsHandlerCollection handlers, Setting? current = null)
     {
+        current ??= source.CreateCopy();
         if (source.Settings?.Any() != true)
         {
+            yield return current;
             yield break;
         }
 
-        foreach (var item in source.Settings!)
+        foreach (var item in source.Settings)
         {
-            var current = item.CreateCopy();
-            if (parent != null)
-            {
-                current.Merge(parent);
-            }
-
+            var copy = item.CreateCopy();
+            copy.MergeTo(current);
             if (item.Settings != null)
             {
-                foreach (var subItem in FlattenSettings(item, handlers, current))
+                foreach (var subItem in FlattenSettings(item, handlers, copy))
                 {
                     yield return subItem;
                 }
             }
             else
             {
-                yield return current;
+                yield return copy;
             }
         }
     }
 
-    private static IEnumerable<Setting> EnumerateSettings(IHasSettings source)
+    private static IEnumerable<Setting> EnumerateDeep(Setting source)
     {
+        yield return source;
         if (source.Settings == null)
         {
             yield break;
@@ -60,7 +59,7 @@ public class SettingsParser(SettingsHandlerCollection settingsHandlers)
         foreach (var item in source.Settings)
         {
             yield return item;
-            foreach (var subItem in EnumerateSettings(item))
+            foreach (var subItem in EnumerateDeep(item))
             {
                 yield return subItem;
             }

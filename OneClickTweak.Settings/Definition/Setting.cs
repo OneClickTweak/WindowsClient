@@ -1,10 +1,9 @@
 using System.Text.Json.Serialization;
-using OneClickTweak.Settings.Runtime;
 using OneClickTweak.Settings.Serialization;
 
 namespace OneClickTweak.Settings.Definition;
 
-public record Setting : IHasSettings
+public record Setting
 {
     public Setting CreateCopy()
     {
@@ -17,10 +16,10 @@ public record Setting : IHasSettings
         };
     }
 
-    public void Merge(Setting setting)
+    public void MergeTo(Setting setting)
     {
         Platform ??= setting.Platform;
-        Name ??= setting.Name;
+        Name = setting.Name.Concat(Name).ToList();
         Handler ??= setting.Handler;
         Scope ??= setting.Scope;
         Path ??= setting.Path?.ToList();
@@ -47,7 +46,7 @@ public record Setting : IHasSettings
     /// <summary>
     /// Translation key relative to definition key, or absolute if contains "."
     /// </summary>
-    public string? Name { get; set; }
+    public required ICollection<string> Name { get; set; }
 
     /// <summary>
     /// Handler

@@ -1,0 +1,28 @@
+[
+  {
+    "platform": [ "Windows" ],
+    "name": [ "Windows", "Power", "Hibernate", "Registry" ],
+    "handler": "Registry",
+    "scope": "Machine",
+    "path": [ "SYSTEM", "CurrentControlSet", "Control", "Power" ],
+    "key": "HibernateEnabled",
+    "type": "Int32",
+    "values": [
+      { "name": "Enabled", "value": "1", "isDefault": true },
+      { "name": "Disabled", "value": "0" }
+    ]
+  },
+  {
+    "platform": [ "Windows" ],
+    "name": [ "Windows", "Power", "Hibernate", "GPO" ],
+    "handler": "GPO",
+    "scope": "Machine",
+    "path": [ "SYSTEM", "Policies", "Control", "Power" ],
+    "key": "HibernateDisabled",
+    "type": "Boolean",
+    "values": [
+      { "name": "Enabled", "value": "false", "isDefault": true },
+      { "name": "Disabled", "value": "true" }
+    ]
+  }
+]

@@ -1,31 +1,31 @@
-{
-  "name": "Windows.Power.Hibernate",
-  "settings": [
-    {
-      "platform": [ "Windows" ],
-      "scope": "Machine",
-      "settings": [
-        {
-          "handler": "Registry",
-          "path": [ "SYSTEM", "CurrentControlSet", "Control", "Power" ],
-          "key": "HibernateEnabled",
-          "type": "Int32",
-          "values": [
-            { "name": "Global.Enabled", "value": "1", "isDefault": true },
-            { "name": "Global.Disabled", "value": "0" }
-          ]
-        },
-        {
-          "handler": "GPO",
-          "path": [ "SYSTEM", "Policies", "Control", "Power" ],
-          "key": "HibernateDisabled",
-          "type": "Boolean",
-          "values": [
-            { "name": "Global.Enabled", "value": "false", "isDefault": true },
-            { "name": "Global.Disabled", "value": "true" }
-          ]
-        }
-      ]
-    }
-  ]
-}
+[
+  {
+    "platform": [ "Windows" ],
+    "name": [ "Windows", "Power", "Hibernate" ],
+    "scope": "Machine",
+    "settings": [
+      {
+        "name": [ "Registry" ],
+        "handler": "Registry",
+        "path": [ "SYSTEM", "CurrentControlSet", "Control", "Power" ],
+        "key": "HibernateEnabled",
+        "type": "Int32",
+        "values": [
+          { "name": "Enabled", "value": "1", "isDefault": true },
+          { "name": "Disabled", "value": "0" }
+        ]
+      },
+      {
+        "name": [ "GPO" ],
+        "handler": "GPO",
+        "path": [ "SYSTEM", "Policies", "Control", "Power" ],
+        "key": "HibernateDisabled",
+        "type": "Boolean",
+        "values": [
+          { "name": "Enabled", "value": "false", "isDefault": true },
+          { "name": "Disabled", "value": "true" }
+        ]
+      }
+    ]
+  }
+]

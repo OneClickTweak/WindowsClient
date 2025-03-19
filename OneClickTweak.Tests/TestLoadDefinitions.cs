@@ -18,7 +18,9 @@ public class TestLoadDefinitions(ITestOutputHelper outputHelper)
     {
         var definitionsFile = Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location)!, "TestFiles", "definitions.json");
         using var stream = File.OpenRead(definitionsFile);
-        var test = JsonSerializer.Deserialize<SettingDefinition>(stream, SettingsSerializer.Options);
+        var test = JsonSerializer.Deserialize<Setting[]>(stream, SettingsSerializer.Options);
+        Assert.NotNull(test);
+        Assert.Equal(1, test.Length);
     }    
     
     [Fact]

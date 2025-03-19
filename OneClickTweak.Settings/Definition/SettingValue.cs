@@ -3,11 +3,6 @@ namespace OneClickTweak.Settings.Definition;
 public record SettingValue
 {
     /// <summary>
-    /// If registered, identifier of the value
-    /// </summary>
-    public Guid? Id { get; set; }
-
-    /// <summary>
     /// Translation key relative to definition key
     /// </summary>
     public string Name { get; set; }
