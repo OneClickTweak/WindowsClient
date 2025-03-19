@@ -36,13 +36,19 @@ public class RegistryHandler() : WindowsHandler("Registry")
         }
     }
 
-    private static IDictionary<SettingType, RegistryValueKind> RegistryTypeMap = new Dictionary<SettingType, RegistryValueKind>
+    public static SettingType GetSettingType(string key)
     {
-        { SettingType.String, RegistryValueKind.String },
-        { SettingType.ExpandString, RegistryValueKind.ExpandString },
-        { SettingType.MultiString, RegistryValueKind.MultiString },
-        { SettingType.Bytes, RegistryValueKind.Binary },
-        { SettingType.Int32, RegistryValueKind.DWord },
-        { SettingType.Int64, RegistryValueKind.QWord }
+        var registryType = (RegistryValueKind)Enum.Parse(typeof(RegistryValueKind), key, false);
+        return RegistryTypeMap[registryType];
+    }
+
+    private static readonly IDictionary<RegistryValueKind, SettingType> RegistryTypeMap = new Dictionary<RegistryValueKind, SettingType>
+    {
+        { RegistryValueKind.String, SettingType.String },
+        { RegistryValueKind.ExpandString, SettingType.ExpandString },
+        { RegistryValueKind.MultiString, SettingType.MultiString },
+        { RegistryValueKind.Binary, SettingType.Bytes },
+        { RegistryValueKind.DWord, SettingType.Int32 },
+        { RegistryValueKind.QWord, SettingType.Int64 }
     };
 }

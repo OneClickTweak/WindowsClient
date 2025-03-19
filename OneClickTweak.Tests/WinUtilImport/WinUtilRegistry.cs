@@ -9,6 +9,8 @@ public class WinUtilRegistry
     public required string Type { get; set; }
     
     public required string Value { get; set; }
+
+    public string? DefaultState { get; set; }
     
     public required string? OriginalValue { get; set; }
 }

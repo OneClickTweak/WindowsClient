@@ -1,0 +1,3519 @@
+[
+  {
+    "name": [
+      "Windows",
+      "Tweak",
+      "ConsumerFeatures"
+    ],
+    "tags": [
+      "Essential Tweaks",
+      "Windows 10 will not automatically install any games, third-party apps, or application links from the Windows Store for the signed-in user. Some default Apps will be inaccessible (eg. Phone Link)"
+    ],
+    "handler": "Registry",
+    "settings": [
+      {
+        "name": [
+          "DisableWindowsConsumerFeatures"
+        ],
+        "path": [
+          "HKLM",
+          "SOFTWARE",
+          "Policies",
+          "Microsoft",
+          "Windows",
+          "CloudContent"
+        ],
+        "key": "DisableWindowsConsumerFeatures",
+        "type": "Int32",
+        "values": [
+          {
+            "isDefault": true
+          },
+          {
+            "value": "1"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "name": [
+      "Windows",
+      "Tweak",
+      "Tele"
+    ],
+    "tags": [
+      "Essential Tweaks",
+      "Disables Microsoft Telemetry. Note: This will lock many Edge Browser settings. Microsoft spies heavily on you when using the Edge browser."
+    ],
+    "handler": "Registry",
+    "settings": [
+      {
+        "name": [
+          "AllowTelemetry"
+        ],
+        "path": [
+          "HKLM",
+          "SOFTWARE",
+          "Microsoft",
+          "Windows",
+          "CurrentVersion",
+          "Policies",
+          "DataCollection"
+        ],
+        "key": "AllowTelemetry",
+        "type": "Int32",
+        "values": [
+          {
+            "isDefault": true
+          },
+          {
+            "value": "0"
+          }
+        ]
+      },
+      {
+        "name": [
+          "AllowTelemetry"
+        ],
+        "path": [
+          "HKLM",
+          "SOFTWARE",
+          "Policies",
+          "Microsoft",
+          "Windows",
+          "DataCollection"
+        ],
+        "key": "AllowTelemetry",
+        "type": "Int32",
+        "values": [
+          {
+            "isDefault": true
+          },
+          {
+            "value": "0"
+          }
+        ]
+      },
+      {
+        "name": [
+          "ContentDeliveryAllowed"
+        ],
+        "path": [
+          "HKCU",
+          "SOFTWARE",
+          "Microsoft",
+          "Windows",
+          "CurrentVersion",
+          "ContentDeliveryManager"
+        ],
+        "key": "ContentDeliveryAllowed",
+        "type": "Int32",
+        "values": [
+          {
+            "value": "1",
+            "isDefault": true
+          },
+          {
+            "value": "0"
+          }
+        ]
+      },
+      {
+        "name": [
+          "OemPreInstalledAppsEnabled"
+        ],
+        "path": [
+          "HKCU",
+          "SOFTWARE",
+          "Microsoft",
+          "Windows",
+          "CurrentVersion",
+          "ContentDeliveryManager"
+        ],
+        "key": "OemPreInstalledAppsEnabled",
+        "type": "Int32",
+        "values": [
+          {
+            "value": "1",
+            "isDefault": true
+          },
+          {
+            "value": "0"
+          }
+        ]
+      },
+      {
+        "name": [
+          "PreInstalledAppsEnabled"
+        ],
+        "path": [
+          "HKCU",
+          "SOFTWARE",
+          "Microsoft",
+          "Windows",
+          "CurrentVersion",
+          "ContentDeliveryManager"
+        ],
+        "key": "PreInstalledAppsEnabled",
+        "type": "Int32",
+        "values": [
+          {
+            "value": "1",
+            "isDefault": true
+          },
+          {
+            "value": "0"
+          }
+        ]
+      },
+      {
+        "name": [
+          "PreInstalledAppsEverEnabled"
+        ],
+        "path": [
+          "HKCU",
+          "SOFTWARE",
+          "Microsoft",
+          "Windows",
+          "CurrentVersion",
+          "ContentDeliveryManager"
+        ],
+        "key": "PreInstalledAppsEverEnabled",
+        "type": "Int32",
+        "values": [
+          {
+            "value": "1",
+            "isDefault": true
+          },
+          {
+            "value": "0"
+          }
+        ]
+      },
+      {
+        "name": [
+          "SilentInstalledAppsEnabled"
+        ],
+        "path": [
+          "HKCU",
+          "SOFTWARE",
+          "Microsoft",
+          "Windows",
+          "CurrentVersion",
+          "ContentDeliveryManager"
+        ],
+        "key": "SilentInstalledAppsEnabled",
+        "type": "Int32",
+        "values": [
+          {
+            "value": "1",
+            "isDefault": true
+          },
+          {
+            "value": "0"
+          }
+        ]
+      },
+      {
+        "name": [
+          "SubscribedContent-338387Enabled"
+        ],
+        "path": [
+          "HKCU",
+          "Software",
+          "Microsoft",
+          "Windows",
+          "CurrentVersion",
+          "ContentDeliveryManager"
+        ],
+        "key": "SubscribedContent-338387Enabled",
+        "type": "Int32",
+        "values": [
+          {
+            "value": "1",
+            "isDefault": true
+          },
+          {
+            "value": "0"
+          }
+        ]
+      },
+      {
+        "name": [
+          "SubscribedContent-338388Enabled"
+        ],
+        "path": [
+          "HKCU",
+          "SOFTWARE",
+          "Microsoft",
+          "Windows",
+          "CurrentVersion",
+          "ContentDeliveryManager"
+        ],
+        "key": "SubscribedContent-338388Enabled",
+        "type": "Int32",
+        "values": [
+          {
+            "value": "1",
+            "isDefault": true
+          },
+          {
+            "value": "0"
+          }
+        ]
+      },
+      {
+        "name": [
+          "SubscribedContent-338389Enabled"
+        ],
+        "path": [
+          "HKCU",
+          "SOFTWARE",
+          "Microsoft",
+          "Windows",
+          "CurrentVersion",
+          "ContentDeliveryManager"
+        ],
+        "key": "SubscribedContent-338389Enabled",
+        "type": "Int32",
+        "values": [
+          {
+            "value": "1",
+            "isDefault": true
+          },
+          {
+            "value": "0"
+          }
+        ]
+      },
+      {
+        "name": [
+          "SubscribedContent-353698Enabled"
+        ],
+        "path": [
+          "HKCU",
+          "SOFTWARE",
+          "Microsoft",
+          "Windows",
+          "CurrentVersion",
+          "ContentDeliveryManager"
+        ],
+        "key": "SubscribedContent-353698Enabled",
+        "type": "Int32",
+        "values": [
+          {
+            "value": "1",
+            "isDefault": true
+          },
+          {
+            "value": "0"
+          }
+        ]
+      },
+      {
+        "name": [
+          "SystemPaneSuggestionsEnabled"
+        ],
+        "path": [
+          "HKCU",
+          "SOFTWARE",
+          "Microsoft",
+          "Windows",
+          "CurrentVersion",
+          "ContentDeliveryManager"
+        ],
+        "key": "SystemPaneSuggestionsEnabled",
+        "type": "Int32",
+        "values": [
+          {
+            "value": "1",
+            "isDefault": true
+          },
+          {
+            "value": "0"
+          }
+        ]
+      },
+      {
+        "name": [
+          "NumberOfSIUFInPeriod"
+        ],
+        "path": [
+          "HKCU",
+          "SOFTWARE",
+          "Microsoft",
+          "Siuf",
+          "Rules"
+        ],
+        "key": "NumberOfSIUFInPeriod",
+        "type": "Int32",
+        "values": [
+          {
+            "value": "0",
+            "isDefault": true
+          },
+          {
+            "value": "0"
+          }
+        ]
+      },
+      {
+        "name": [
+          "DoNotShowFeedbackNotifications"
+        ],
+        "path": [
+          "HKLM",
+          "SOFTWARE",
+          "Policies",
+          "Microsoft",
+          "Windows",
+          "DataCollection"
+        ],
+        "key": "DoNotShowFeedbackNotifications",
+        "type": "Int32",
+        "values": [
+          {
+            "isDefault": true
+          },
+          {
+            "value": "1"
+          }
+        ]
+      },
+      {
+        "name": [
+          "DisableTailoredExperiencesWithDiagnosticData"
+        ],
+        "path": [
+          "HKCU",
+          "SOFTWARE",
+          "Policies",
+          "Microsoft",
+          "Windows",
+          "CloudContent"
+        ],
+        "key": "DisableTailoredExperiencesWithDiagnosticData",
+        "type": "Int32",
+        "values": [
+          {
+            "isDefault": true
+          },
+          {
+            "value": "1"
+          }
+        ]
+      },
+      {
+        "name": [
+          "DisabledByGroupPolicy"
+        ],
+        "path": [
+          "HKLM",
+          "SOFTWARE",
+          "Policies",
+          "Microsoft",
+          "Windows",
+          "AdvertisingInfo"
+        ],
+        "key": "DisabledByGroupPolicy",
+        "type": "Int32",
+        "values": [
+          {
+            "isDefault": true
+          },
+          {
+            "value": "1"
+          }
+        ]
+      },
+      {
+        "name": [
+          "Disabled"
+        ],
+        "path": [
+          "HKLM",
+          "SOFTWARE",
+          "Microsoft",
+          "Windows",
+          "Windows Error Reporting"
+        ],
+        "key": "Disabled",
+        "type": "Int32",
+        "values": [
+          {
+            "value": "0",
+            "isDefault": true
+          },
+          {
+            "value": "1"
+          }
+        ]
+      },
+      {
+        "name": [
+          "DODownloadMode"
+        ],
+        "path": [
+          "HKLM",
+          "SOFTWARE",
+          "Microsoft",
+          "Windows",
+          "CurrentVersion",
+          "DeliveryOptimization",
+          "Config"
+        ],
+        "key": "DODownloadMode",
+        "type": "Int32",
+        "values": [
+          {
+            "value": "1",
+            "isDefault": true
+          },
+          {
+            "value": "1"
+          }
+        ]
+      },
+      {
+        "name": [
+          "fAllowToGetHelp"
+        ],
+        "path": [
+          "HKLM",
+          "SYSTEM",
+          "CurrentControlSet",
+          "Control",
+          "Remote Assistance"
+        ],
+        "key": "fAllowToGetHelp",
+        "type": "Int32",
+        "values": [
+          {
+            "value": "1",
+            "isDefault": true
+          },
+          {
+            "value": "0"
+          }
+        ]
+      },
+      {
+        "name": [
+          "EnthusiastMode"
+        ],
+        "path": [
+          "HKCU",
+          "SOFTWARE",
+          "Microsoft",
+          "Windows",
+          "CurrentVersion",
+          "Explorer",
+          "OperationStatusManager"
+        ],
+        "key": "EnthusiastMode",
+        "type": "Int32",
+        "values": [
+          {
+            "value": "0",
+            "isDefault": true
+          },
+          {
+            "value": "1"
+          }
+        ]
+      },
+      {
+        "name": [
+          "ShowTaskViewButton"
+        ],
+        "path": [
+          "HKCU",
+          "SOFTWARE",
+          "Microsoft",
+          "Windows",
+          "CurrentVersion",
+          "Explorer",
+          "Advanced"
+        ],
+        "key": "ShowTaskViewButton",
+        "type": "Int32",
+        "values": [
+          {
+            "value": "1",
+            "isDefault": true
+          },
+          {
+            "value": "0"
+          }
+        ]
+      },
+      {
+        "name": [
+          "PeopleBand"
+        ],
+        "path": [
+          "HKCU",
+          "SOFTWARE",
+          "Microsoft",
+          "Windows",
+          "CurrentVersion",
+          "Explorer",
+          "Advanced",
+          "People"
+        ],
+        "key": "PeopleBand",
+        "type": "Int32",
+        "values": [
+          {
+            "value": "1",
+            "isDefault": true
+          },
+          {
+            "value": "0"
+          }
+        ]
+      },
+      {
+        "name": [
+          "LaunchTo"
+        ],
+        "path": [
+          "HKCU",
+          "SOFTWARE",
+          "Microsoft",
+          "Windows",
+          "CurrentVersion",
+          "Explorer",
+          "Advanced"
+        ],
+        "key": "LaunchTo",
+        "type": "Int32",
+        "values": [
+          {
+            "value": "1",
+            "isDefault": true
+          },
+          {
+            "value": "1"
+          }
+        ]
+      },
+      {
+        "name": [
+          "LongPathsEnabled"
+        ],
+        "path": [
+          "HKLM",
+          "SYSTEM",
+          "CurrentControlSet",
+          "Control",
+          "FileSystem"
+        ],
+        "key": "LongPathsEnabled",
+        "type": "Int32",
+        "values": [
+          {
+            "value": "0",
+            "isDefault": true
+          },
+          {
+            "value": "1"
+          }
+        ]
+      },
+      {
+        "name": [
+          "SearchOrderConfig"
+        ],
+        "path": [
+          "HKLM",
+          "SOFTWARE",
+          "Microsoft",
+          "Windows",
+          "CurrentVersion",
+          "DriverSearching"
+        ],
+        "key": "SearchOrderConfig",
+        "type": "Int32",
+        "values": [
+          {
+            "value": "1",
+            "isDefault": true
+          },
+          {
+            "value": "1"
+          }
+        ]
+      },
+      {
+        "name": [
+          "SystemResponsiveness"
+        ],
+        "path": [
+          "HKLM",
+          "SOFTWARE",
+          "Microsoft",
+          "Windows NT",
+          "CurrentVersion",
+          "Multimedia",
+          "SystemProfile"
+        ],
+        "key": "SystemResponsiveness",
+        "type": "Int32",
+        "values": [
+          {
+            "value": "1",
+            "isDefault": true
+          },
+          {
+            "value": "0"
+          }
+        ]
+      },
+      {
+        "name": [
+          "NetworkThrottlingIndex"
+        ],
+        "path": [
+          "HKLM",
+          "SOFTWARE",
+          "Microsoft",
+          "Windows NT",
+          "CurrentVersion",
+          "Multimedia",
+          "SystemProfile"
+        ],
+        "key": "NetworkThrottlingIndex",
+        "type": "Int32",
+        "values": [
+          {
+            "value": "1",
+            "isDefault": true
+          },
+          {
+            "value": "4294967295"
+          }
+        ]
+      },
+      {
+        "name": [
+          "MenuShowDelay"
+        ],
+        "path": [
+          "HKCU",
+          "Control Panel",
+          "Desktop"
+        ],
+        "key": "MenuShowDelay",
+        "type": "Int32",
+        "values": [
+          {
+            "value": "1",
+            "isDefault": true
+          },
+          {
+            "value": "1"
+          }
+        ]
+      },
+      {
+        "name": [
+          "AutoEndTasks"
+        ],
+        "path": [
+          "HKCU",
+          "Control Panel",
+          "Desktop"
+        ],
+        "key": "AutoEndTasks",
+        "type": "Int32",
+        "values": [
+          {
+            "value": "1",
+            "isDefault": true
+          },
+          {
+            "value": "1"
+          }
+        ]
+      },
+      {
+        "name": [
+          "ClearPageFileAtShutdown"
+        ],
+        "path": [
+          "HKLM",
+          "SYSTEM",
+          "CurrentControlSet",
+          "Control",
+          "Session Manager",
+          "Memory Management"
+        ],
+        "key": "ClearPageFileAtShutdown",
+        "type": "Int32",
+        "values": [
+          {
+            "value": "0",
+            "isDefault": true
+          },
+          {
+            "value": "0"
+          }
+        ]
+      },
+      {
+        "name": [
+          "Start"
+        ],
+        "path": [
+          "HKLM",
+          "SYSTEM",
+          "ControlSet001",
+          "Services",
+          "Ndu"
+        ],
+        "key": "Start",
+        "type": "Int32",
+        "values": [
+          {
+            "value": "1",
+            "isDefault": true
+          },
+          {
+            "value": "2"
+          }
+        ]
+      },
+      {
+        "name": [
+          "MouseHoverTime"
+        ],
+        "path": [
+          "HKCU",
+          "Control Panel",
+          "Mouse"
+        ],
+        "key": "MouseHoverTime",
+        "type": "String",
+        "values": [
+          {
+            "value": "400",
+            "isDefault": true
+          },
+          {
+            "value": "400"
+          }
+        ]
+      },
+      {
+        "name": [
+          "IRPStackSize"
+        ],
+        "path": [
+          "HKLM",
+          "SYSTEM",
+          "CurrentControlSet",
+          "Services",
+          "LanmanServer",
+          "Parameters"
+        ],
+        "key": "IRPStackSize",
+        "type": "Int32",
+        "values": [
+          {
+            "value": "20",
+            "isDefault": true
+          },
+          {
+            "value": "30"
+          }
+        ]
+      },
+      {
+        "name": [
+          "EnableFeeds"
+        ],
+        "path": [
+          "HKCU",
+          "SOFTWARE",
+          "Policies",
+          "Microsoft",
+          "Windows",
+          "Windows Feeds"
+        ],
+        "key": "EnableFeeds",
+        "type": "Int32",
+        "values": [
+          {
+            "isDefault": true
+          },
+          {
+            "value": "0"
+          }
+        ]
+      },
+      {
+        "name": [
+          "ShellFeedsTaskbarViewMode"
+        ],
+        "path": [
+          "HKCU",
+          "Software",
+          "Microsoft",
+          "Windows",
+          "CurrentVersion",
+          "Feeds"
+        ],
+        "key": "ShellFeedsTaskbarViewMode",
+        "type": "Int32",
+        "values": [
+          {
+            "value": "1",
+            "isDefault": true
+          },
+          {
+            "value": "2"
+          }
+        ]
+      },
+      {
+        "name": [
+          "HideSCAMeetNow"
+        ],
+        "path": [
+          "HKCU",
+          "Software",
+          "Microsoft",
+          "Windows",
+          "CurrentVersion",
+          "Policies",
+          "Explorer"
+        ],
+        "key": "HideSCAMeetNow",
+        "type": "Int32",
+        "values": [
+          {
+            "isDefault": true
+          },
+          {
+            "value": "1"
+          }
+        ]
+      },
+      {
+        "name": [
+          "ScoobeSystemSettingEnabled"
+        ],
+        "path": [
+          "HKCU",
+          "Software",
+          "Microsoft",
+          "Windows",
+          "CurrentVersion",
+          "UserProfileEngagement"
+        ],
+        "key": "ScoobeSystemSettingEnabled",
+        "type": "Int32",
+        "values": [
+          {
+            "value": "1",
+            "isDefault": true
+          },
+          {
+            "value": "0"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "name": [
+      "Windows",
+      "Tweak",
+      "AH"
+    ],
+    "tags": [
+      "Essential Tweaks",
+      "This erases recent docs, clipboard, and run history."
+    ],
+    "handler": "Registry",
+    "settings": [
+      {
+        "name": [
+          "EnableActivityFeed"
+        ],
+        "path": [
+          "HKLM",
+          "SOFTWARE",
+          "Policies",
+          "Microsoft",
+          "Windows",
+          "System"
+        ],
+        "key": "EnableActivityFeed",
+        "type": "Int32",
+        "values": [
+          {
+            "isDefault": true
+          },
+          {
+            "value": "0"
+          }
+        ]
+      },
+      {
+        "name": [
+          "PublishUserActivities"
+        ],
+        "path": [
+          "HKLM",
+          "SOFTWARE",
+          "Policies",
+          "Microsoft",
+          "Windows",
+          "System"
+        ],
+        "key": "PublishUserActivities",
+        "type": "Int32",
+        "values": [
+          {
+            "isDefault": true
+          },
+          {
+            "value": "0"
+          }
+        ]
+      },
+      {
+        "name": [
+          "UploadUserActivities"
+        ],
+        "path": [
+          "HKLM",
+          "SOFTWARE",
+          "Policies",
+          "Microsoft",
+          "Windows",
+          "System"
+        ],
+        "key": "UploadUserActivities",
+        "type": "Int32",
+        "values": [
+          {
+            "isDefault": true
+          },
+          {
+            "value": "0"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "name": [
+      "Windows",
+      "Tweak",
+      "Hiber"
+    ],
+    "tags": [
+      "Essential Tweaks",
+      "Hibernation is really meant for laptops as it saves what\u0027s in memory before turning the pc off. It really should never be used, but some people are lazy and rely on it. Don\u0027t be like Bob. Bob likes hibernation."
+    ],
+    "handler": "Registry",
+    "settings": [
+      {
+        "name": [
+          "HibernateEnabled"
+        ],
+        "path": [
+          "HKLM",
+          "System",
+          "CurrentControlSet",
+          "Control",
+          "Session Manager",
+          "Power"
+        ],
+        "key": "HibernateEnabled",
+        "type": "Int32",
+        "values": [
+          {
+            "value": "1",
+            "isDefault": true
+          },
+          {
+            "value": "0"
+          }
+        ]
+      },
+      {
+        "name": [
+          "ShowHibernateOption"
+        ],
+        "path": [
+          "HKLM",
+          "SOFTWARE",
+          "Microsoft",
+          "Windows",
+          "CurrentVersion",
+          "Explorer",
+          "FlyoutMenuSettings"
+        ],
+        "key": "ShowHibernateOption",
+        "type": "Int32",
+        "values": [
+          {
+            "value": "1",
+            "isDefault": true
+          },
+          {
+            "value": "0"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "name": [
+      "Windows",
+      "Tweak",
+      "Loc"
+    ],
+    "tags": [
+      "Essential Tweaks",
+      "Disables Location Tracking...DUH!"
+    ],
+    "handler": "Registry",
+    "settings": [
+      {
+        "name": [
+          "Value"
+        ],
+        "path": [
+          "HKLM",
+          "SOFTWARE",
+          "Microsoft",
+          "Windows",
+          "CurrentVersion",
+          "CapabilityAccessManager",
+          "ConsentStore",
+          "location"
+        ],
+        "key": "Value",
+        "type": "String",
+        "values": [
+          {
+            "value": "Allow",
+            "isDefault": true
+          },
+          {
+            "value": "Deny"
+          }
+        ]
+      },
+      {
+        "name": [
+          "SensorPermissionState"
+        ],
+        "path": [
+          "HKLM",
+          "SOFTWARE",
+          "Microsoft",
+          "Windows NT",
+          "CurrentVersion",
+          "Sensor",
+          "Overrides",
+          "{BFA794E4-F964-4FDB-90F6-51056BFE4B44}"
+        ],
+        "key": "SensorPermissionState",
+        "type": "Int32",
+        "values": [
+          {
+            "value": "1",
+            "isDefault": true
+          },
+          {
+            "value": "0"
+          }
+        ]
+      },
+      {
+        "name": [
+          "Status"
+        ],
+        "path": [
+          "HKLM",
+          "SYSTEM",
+          "CurrentControlSet",
+          "Services",
+          "lfsvc",
+          "Service",
+          "Configuration"
+        ],
+        "key": "Status",
+        "type": "Int32",
+        "values": [
+          {
+            "value": "1",
+            "isDefault": true
+          },
+          {
+            "value": "0"
+          }
+        ]
+      },
+      {
+        "name": [
+          "AutoUpdateEnabled"
+        ],
+        "path": [
+          "HKLM",
+          "SYSTEM",
+          "Maps"
+        ],
+        "key": "AutoUpdateEnabled",
+        "type": "Int32",
+        "values": [
+          {
+            "value": "1",
+            "isDefault": true
+          },
+          {
+            "value": "0"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "name": [
+      "Windows",
+      "Tweak",
+      "Wifi"
+    ],
+    "tags": [
+      "Essential Tweaks",
+      "Wifi Sense is a spying service that phones home all nearby scanned wifi networks and your current geo location."
+    ],
+    "handler": "Registry",
+    "settings": [
+      {
+        "name": [
+          "Value"
+        ],
+        "path": [
+          "HKLM",
+          "Software",
+          "Microsoft",
+          "PolicyManager",
+          "default",
+          "WiFi",
+          "AllowWiFiHotSpotReporting"
+        ],
+        "key": "Value",
+        "type": "Int32",
+        "values": [
+          {
+            "value": "1",
+            "isDefault": true
+          },
+          {
+            "value": "0"
+          }
+        ]
+      },
+      {
+        "name": [
+          "Value"
+        ],
+        "path": [
+          "HKLM",
+          "Software",
+          "Microsoft",
+          "PolicyManager",
+          "default",
+          "WiFi",
+          "AllowAutoConnectToWiFiSenseHotspots"
+        ],
+        "key": "Value",
+        "type": "Int32",
+        "values": [
+          {
+            "value": "1",
+            "isDefault": true
+          },
+          {
+            "value": "0"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "name": [
+      "Windows",
+      "Tweak",
+      "DVR"
+    ],
+    "tags": [
+      "Essential Tweaks",
+      "GameDVR is a Windows App that is a dependency for some Store Games. I\u0027ve never met someone that likes it, but it\u0027s there for the XBOX crowd."
+    ],
+    "handler": "Registry",
+    "settings": [
+      {
+        "name": [
+          "GameDVR_FSEBehavior"
+        ],
+        "path": [
+          "HKCU",
+          "System",
+          "GameConfigStore"
+        ],
+        "key": "GameDVR_FSEBehavior",
+        "type": "Int32",
+        "values": [
+          {
+            "value": "1",
+            "isDefault": true
+          },
+          {
+            "value": "2"
+          }
+        ]
+      },
+      {
+        "name": [
+          "GameDVR_Enabled"
+        ],
+        "path": [
+          "HKCU",
+          "System",
+          "GameConfigStore"
+        ],
+        "key": "GameDVR_Enabled",
+        "type": "Int32",
+        "values": [
+          {
+            "value": "1",
+            "isDefault": true
+          },
+          {
+            "value": "0"
+          }
+        ]
+      },
+      {
+        "name": [
+          "GameDVR_HonorUserFSEBehaviorMode"
+        ],
+        "path": [
+          "HKCU",
+          "System",
+          "GameConfigStore"
+        ],
+        "key": "GameDVR_HonorUserFSEBehaviorMode",
+        "type": "Int32",
+        "values": [
+          {
+            "value": "0",
+            "isDefault": true
+          },
+          {
+            "value": "1"
+          }
+        ]
+      },
+      {
+        "name": [
+          "GameDVR_EFSEFeatureFlags"
+        ],
+        "path": [
+          "HKCU",
+          "System",
+          "GameConfigStore"
+        ],
+        "key": "GameDVR_EFSEFeatureFlags",
+        "type": "Int32",
+        "values": [
+          {
+            "value": "1",
+            "isDefault": true
+          },
+          {
+            "value": "0"
+          }
+        ]
+      },
+      {
+        "name": [
+          "AllowGameDVR"
+        ],
+        "path": [
+          "HKLM",
+          "SOFTWARE",
+          "Policies",
+          "Microsoft",
+          "Windows",
+          "GameDVR"
+        ],
+        "key": "AllowGameDVR",
+        "type": "Int32",
+        "values": [
+          {
+            "isDefault": true
+          },
+          {
+            "value": "0"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "name": [
+      "Windows",
+      "Tweak",
+      "RecallOff"
+    ],
+    "tags": [
+      "Essential Tweaks",
+      "Turn Recall off"
+    ],
+    "handler": "Registry",
+    "settings": [
+      {
+        "name": [
+          "DisableAIDataAnalysis"
+        ],
+        "path": [
+          "HKLM",
+          "SOFTWARE",
+          "Policies",
+          "Microsoft",
+          "Windows",
+          "WindowsAI"
+        ],
+        "key": "DisableAIDataAnalysis",
+        "type": "Int32",
+        "values": [
+          {
+            "isDefault": true
+          },
+          {
+            "value": "1"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "name": [
+      "Windows",
+      "Tweak",
+      "LaptopHibernation"
+    ],
+    "tags": [
+      "Essential Tweaks",
+      "Most modern laptops have connected standby enabled which drains the battery, this sets hibernation as default which will not drain the battery. See issue https://github.com/ChrisTitusTech/winutil/issues/1399"
+    ],
+    "handler": "Registry",
+    "settings": [
+      {
+        "name": [
+          "Attributes"
+        ],
+        "path": [
+          "HKLM",
+          "SYSTEM",
+          "CurrentControlSet",
+          "Control",
+          "Power",
+          "PowerSettings",
+          "238C9FA8-0AAD-41ED-83F4-97BE242C8F20",
+          "7bc4a2f9-d8fc-4469-b07b-33eb785aaca0"
+        ],
+        "key": "Attributes",
+        "type": "Int32",
+        "values": [
+          {
+            "value": "1",
+            "isDefault": true
+          },
+          {
+            "value": "2"
+          }
+        ]
+      },
+      {
+        "name": [
+          "Attributes "
+        ],
+        "path": [
+          "HKLM",
+          "SYSTEM",
+          "CurrentControlSet",
+          "Control",
+          "Power",
+          "PowerSettings",
+          "abfc2519-3608-4c2a-94ea-171b0ed546ab",
+          "94ac6d29-73ce-41a6-809f-6363ba21b47e"
+        ],
+        "key": "Attributes ",
+        "type": "Int32",
+        "values": [
+          {
+            "value": "0",
+            "isDefault": true
+          },
+          {
+            "value": "2"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "name": [
+      "Windows",
+      "Tweak",
+      "EdgeDebloat"
+    ],
+    "tags": [
+      "Essential Tweaks",
+      "Disables various telemetry options, popups, and other annoyances in Edge."
+    ],
+    "handler": "Registry",
+    "settings": [
+      {
+        "name": [
+          "CreateDesktopShortcutDefault"
+        ],
+        "path": [
+          "HKLM",
+          "SOFTWARE",
+          "Policies",
+          "Microsoft",
+          "EdgeUpdate"
+        ],
+        "key": "CreateDesktopShortcutDefault",
+        "type": "Int32",
+        "values": [
+          {
+            "isDefault": true
+          },
+          {
+            "value": "0"
+          }
+        ]
+      },
+      {
+        "name": [
+          "PersonalizationReportingEnabled"
+        ],
+        "path": [
+          "HKLM",
+          "SOFTWARE",
+          "Policies",
+          "Microsoft",
+          "Edge"
+        ],
+        "key": "PersonalizationReportingEnabled",
+        "type": "Int32",
+        "values": [
+          {
+            "isDefault": true
+          },
+          {
+            "value": "0"
+          }
+        ]
+      },
+      {
+        "name": [
+          "ShowRecommendationsEnabled"
+        ],
+        "path": [
+          "HKLM",
+          "SOFTWARE",
+          "Policies",
+          "Microsoft",
+          "Edge"
+        ],
+        "key": "ShowRecommendationsEnabled",
+        "type": "Int32",
+        "values": [
+          {
+            "isDefault": true
+          },
+          {
+            "value": "0"
+          }
+        ]
+      },
+      {
+        "name": [
+          "HideFirstRunExperience"
+        ],
+        "path": [
+          "HKLM",
+          "SOFTWARE",
+          "Policies",
+          "Microsoft",
+          "Edge"
+        ],
+        "key": "HideFirstRunExperience",
+        "type": "Int32",
+        "values": [
+          {
+            "isDefault": true
+          },
+          {
+            "value": "1"
+          }
+        ]
+      },
+      {
+        "name": [
+          "UserFeedbackAllowed"
+        ],
+        "path": [
+          "HKLM",
+          "SOFTWARE",
+          "Policies",
+          "Microsoft",
+          "Edge"
+        ],
+        "key": "UserFeedbackAllowed",
+        "type": "Int32",
+        "values": [
+          {
+            "isDefault": true
+          },
+          {
+            "value": "0"
+          }
+        ]
+      },
+      {
+        "name": [
+          "ConfigureDoNotTrack"
+        ],
+        "path": [
+          "HKLM",
+          "SOFTWARE",
+          "Policies",
+          "Microsoft",
+          "Edge"
+        ],
+        "key": "ConfigureDoNotTrack",
+        "type": "Int32",
+        "values": [
+          {
+            "isDefault": true
+          },
+          {
+            "value": "1"
+          }
+        ]
+      },
+      {
+        "name": [
+          "AlternateErrorPagesEnabled"
+        ],
+        "path": [
+          "HKLM",
+          "SOFTWARE",
+          "Policies",
+          "Microsoft",
+          "Edge"
+        ],
+        "key": "AlternateErrorPagesEnabled",
+        "type": "Int32",
+        "values": [
+          {
+            "isDefault": true
+          },
+          {
+            "value": "0"
+          }
+        ]
+      },
+      {
+        "name": [
+          "EdgeCollectionsEnabled"
+        ],
+        "path": [
+          "HKLM",
+          "SOFTWARE",
+          "Policies",
+          "Microsoft",
+          "Edge"
+        ],
+        "key": "EdgeCollectionsEnabled",
+        "type": "Int32",
+        "values": [
+          {
+            "isDefault": true
+          },
+          {
+            "value": "0"
+          }
+        ]
+      },
+      {
+        "name": [
+          "EdgeShoppingAssistantEnabled"
+        ],
+        "path": [
+          "HKLM",
+          "SOFTWARE",
+          "Policies",
+          "Microsoft",
+          "Edge"
+        ],
+        "key": "EdgeShoppingAssistantEnabled",
+        "type": "Int32",
+        "values": [
+          {
+            "isDefault": true
+          },
+          {
+            "value": "0"
+          }
+        ]
+      },
+      {
+        "name": [
+          "MicrosoftEdgeInsiderPromotionEnabled"
+        ],
+        "path": [
+          "HKLM",
+          "SOFTWARE",
+          "Policies",
+          "Microsoft",
+          "Edge"
+        ],
+        "key": "MicrosoftEdgeInsiderPromotionEnabled",
+        "type": "Int32",
+        "values": [
+          {
+            "isDefault": true
+          },
+          {
+            "value": "0"
+          }
+        ]
+      },
+      {
+        "name": [
+          "PersonalizationReportingEnabled"
+        ],
+        "path": [
+          "HKLM",
+          "SOFTWARE",
+          "Policies",
+          "Microsoft",
+          "Edge"
+        ],
+        "key": "PersonalizationReportingEnabled",
+        "type": "Int32",
+        "values": [
+          {
+            "isDefault": true
+          },
+          {
+            "value": "0"
+          }
+        ]
+      },
+      {
+        "name": [
+          "ShowMicrosoftRewards"
+        ],
+        "path": [
+          "HKLM",
+          "SOFTWARE",
+          "Policies",
+          "Microsoft",
+          "Edge"
+        ],
+        "key": "ShowMicrosoftRewards",
+        "type": "Int32",
+        "values": [
+          {
+            "isDefault": true
+          },
+          {
+            "value": "0"
+          }
+        ]
+      },
+      {
+        "name": [
+          "WebWidgetAllowed"
+        ],
+        "path": [
+          "HKLM",
+          "SOFTWARE",
+          "Policies",
+          "Microsoft",
+          "Edge"
+        ],
+        "key": "WebWidgetAllowed",
+        "type": "Int32",
+        "values": [
+          {
+            "isDefault": true
+          },
+          {
+            "value": "0"
+          }
+        ]
+      },
+      {
+        "name": [
+          "DiagnosticData"
+        ],
+        "path": [
+          "HKLM",
+          "SOFTWARE",
+          "Policies",
+          "Microsoft",
+          "Edge"
+        ],
+        "key": "DiagnosticData",
+        "type": "Int32",
+        "values": [
+          {
+            "isDefault": true
+          },
+          {
+            "value": "0"
+          }
+        ]
+      },
+      {
+        "name": [
+          "EdgeAssetDeliveryServiceEnabled"
+        ],
+        "path": [
+          "HKLM",
+          "SOFTWARE",
+          "Policies",
+          "Microsoft",
+          "Edge"
+        ],
+        "key": "EdgeAssetDeliveryServiceEnabled",
+        "type": "Int32",
+        "values": [
+          {
+            "isDefault": true
+          },
+          {
+            "value": "0"
+          }
+        ]
+      },
+      {
+        "name": [
+          "EdgeCollectionsEnabled"
+        ],
+        "path": [
+          "HKLM",
+          "SOFTWARE",
+          "Policies",
+          "Microsoft",
+          "Edge"
+        ],
+        "key": "EdgeCollectionsEnabled",
+        "type": "Int32",
+        "values": [
+          {
+            "isDefault": true
+          },
+          {
+            "value": "0"
+          }
+        ]
+      },
+      {
+        "name": [
+          "CryptoWalletEnabled"
+        ],
+        "path": [
+          "HKLM",
+          "SOFTWARE",
+          "Policies",
+          "Microsoft",
+          "Edge"
+        ],
+        "key": "CryptoWalletEnabled",
+        "type": "Int32",
+        "values": [
+          {
+            "isDefault": true
+          },
+          {
+            "value": "0"
+          }
+        ]
+      },
+      {
+        "name": [
+          "WalletDonationEnabled"
+        ],
+        "path": [
+          "HKLM",
+          "SOFTWARE",
+          "Policies",
+          "Microsoft",
+          "Edge"
+        ],
+        "key": "WalletDonationEnabled",
+        "type": "Int32",
+        "values": [
+          {
+            "isDefault": true
+          },
+          {
+            "value": "0"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "name": [
+      "Windows",
+      "Tweak",
+      "IPv46"
+    ],
+    "tags": [
+      "z__Advanced Tweaks - CAUTION",
+      "To set the IPv4 preference can have latency and security benefits on private networks where IPv6 is not configured."
+    ],
+    "handler": "Registry",
+    "settings": [
+      {
+        "name": [
+          "DisabledComponents"
+        ],
+        "path": [
+          "HKLM",
+          "SYSTEM",
+          "CurrentControlSet",
+          "Services",
+          "Tcpip6",
+          "Parameters"
+        ],
+        "key": "DisabledComponents",
+        "type": "Int32",
+        "values": [
+          {
+            "value": "0",
+            "isDefault": true
+          },
+          {
+            "value": "32"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "name": [
+      "Windows",
+      "Tweak",
+      "Teredo"
+    ],
+    "tags": [
+      "z__Advanced Tweaks - CAUTION",
+      "Teredo network tunneling is a ipv6 feature that can cause additional latency, but may cause problems with some games"
+    ],
+    "handler": "Registry",
+    "settings": [
+      {
+        "name": [
+          "DisabledComponents"
+        ],
+        "path": [
+          "HKLM",
+          "SYSTEM",
+          "CurrentControlSet",
+          "Services",
+          "Tcpip6",
+          "Parameters"
+        ],
+        "key": "DisabledComponents",
+        "type": "Int32",
+        "values": [
+          {
+            "value": "0",
+            "isDefault": true
+          },
+          {
+            "value": "1"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "name": [
+      "Windows",
+      "Tweak",
+      "Disableipsix"
+    ],
+    "tags": [
+      "z__Advanced Tweaks - CAUTION",
+      "Disables IPv6."
+    ],
+    "handler": "Registry",
+    "settings": [
+      {
+        "name": [
+          "DisabledComponents"
+        ],
+        "path": [
+          "HKLM",
+          "SYSTEM",
+          "CurrentControlSet",
+          "Services",
+          "Tcpip6",
+          "Parameters"
+        ],
+        "key": "DisabledComponents",
+        "type": "Int32",
+        "values": [
+          {
+            "value": "0",
+            "isDefault": true
+          },
+          {
+            "value": "255"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "name": [
+      "Windows",
+      "Tweak",
+      "DisableBGapps"
+    ],
+    "tags": [
+      "z__Advanced Tweaks - CAUTION",
+      "Disables all Microsoft Store apps from running in the background, which has to be done individually since Win11"
+    ],
+    "handler": "Registry",
+    "settings": [
+      {
+        "name": [
+          "GlobalUserDisabled"
+        ],
+        "path": [
+          "HKCU",
+          "Software",
+          "Microsoft",
+          "Windows",
+          "CurrentVersion",
+          "BackgroundAccessApplications"
+        ],
+        "key": "GlobalUserDisabled",
+        "type": "Int32",
+        "values": [
+          {
+            "value": "0",
+            "isDefault": true
+          },
+          {
+            "value": "1"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "name": [
+      "Windows",
+      "Tweak",
+      "DisableFSO"
+    ],
+    "tags": [
+      "z__Advanced Tweaks - CAUTION",
+      "Disables FSO in all applications. NOTE: This will disable Color Management in Exclusive Fullscreen"
+    ],
+    "handler": "Registry",
+    "settings": [
+      {
+        "name": [
+          "GameDVR_DXGIHonorFSEWindowsCompatible"
+        ],
+        "path": [
+          "HKCU",
+          "System",
+          "GameConfigStore"
+        ],
+        "key": "GameDVR_DXGIHonorFSEWindowsCompatible",
+        "type": "Int32",
+        "values": [
+          {
+            "value": "0",
+            "isDefault": true
+          },
+          {
+            "value": "1"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "name": [
+      "Windows",
+      "Tweak",
+      "RemoveCopilot"
+    ],
+    "tags": [
+      "z__Advanced Tweaks - CAUTION",
+      "Disables MS Copilot AI built into Windows since 23H2."
+    ],
+    "handler": "Registry",
+    "settings": [
+      {
+        "name": [
+          "TurnOffWindowsCopilot"
+        ],
+        "path": [
+          "HKLM",
+          "SOFTWARE",
+          "Policies",
+          "Microsoft",
+          "Windows",
+          "WindowsCopilot"
+        ],
+        "key": "TurnOffWindowsCopilot",
+        "type": "Int32",
+        "values": [
+          {
+            "isDefault": true
+          },
+          {
+            "value": "1"
+          }
+        ]
+      },
+      {
+        "name": [
+          "TurnOffWindowsCopilot"
+        ],
+        "path": [
+          "HKCU",
+          "Software",
+          "Policies",
+          "Microsoft",
+          "Windows",
+          "WindowsCopilot"
+        ],
+        "key": "TurnOffWindowsCopilot",
+        "type": "Int32",
+        "values": [
+          {
+            "isDefault": true
+          },
+          {
+            "value": "1"
+          }
+        ]
+      },
+      {
+        "name": [
+          "ShowCopilotButton"
+        ],
+        "path": [
+          "HKCU",
+          "Software",
+          "Microsoft",
+          "Windows",
+          "CurrentVersion",
+          "Explorer",
+          "Advanced"
+        ],
+        "key": "ShowCopilotButton",
+        "type": "Int32",
+        "values": [
+          {
+            "value": "1",
+            "isDefault": true
+          },
+          {
+            "value": "0"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "name": [
+      "Windows",
+      "Tweak",
+      "DisableNotifications"
+    ],
+    "tags": [
+      "z__Advanced Tweaks - CAUTION",
+      "Disables all Notifications INCLUDING Calendar"
+    ],
+    "handler": "Registry",
+    "settings": [
+      {
+        "name": [
+          "DisableNotificationCenter"
+        ],
+        "path": [
+          "HKCU",
+          "Software",
+          "Policies",
+          "Microsoft",
+          "Windows",
+          "Explorer"
+        ],
+        "key": "DisableNotificationCenter",
+        "type": "Int32",
+        "values": [
+          {
+            "isDefault": true
+          },
+          {
+            "value": "1"
+          }
+        ]
+      },
+      {
+        "name": [
+          "ToastEnabled"
+        ],
+        "path": [
+          "HKCU",
+          "Software",
+          "Microsoft",
+          "Windows",
+          "CurrentVersion",
+          "PushNotifications"
+        ],
+        "key": "ToastEnabled",
+        "type": "Int32",
+        "values": [
+          {
+            "value": "1",
+            "isDefault": true
+          },
+          {
+            "value": "0"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "name": [
+      "Windows",
+      "Tweak",
+      "UTC"
+    ],
+    "tags": [
+      "z__Advanced Tweaks - CAUTION",
+      "Essential for computers that are dual booting. Fixes the time sync with Linux Systems."
+    ],
+    "handler": "Registry",
+    "settings": [
+      {
+        "name": [
+          "RealTimeIsUniversal"
+        ],
+        "path": [
+          "HKLM",
+          "SYSTEM",
+          "CurrentControlSet",
+          "Control",
+          "TimeZoneInformation"
+        ],
+        "key": "RealTimeIsUniversal",
+        "type": "Int32",
+        "values": [
+          {
+            "value": "0",
+            "isDefault": true
+          },
+          {
+            "value": "1"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "name": [
+      "Windows",
+      "Tweak",
+      "Display"
+    ],
+    "tags": [
+      "z__Advanced Tweaks - CAUTION",
+      "Sets the system preferences to performance. You can do this manually with sysdm.cpl as well."
+    ],
+    "handler": "Registry",
+    "settings": [
+      {
+        "name": [
+          "DragFullWindows"
+        ],
+        "path": [
+          "HKCU",
+          "Control Panel",
+          "Desktop"
+        ],
+        "key": "DragFullWindows",
+        "type": "String",
+        "values": [
+          {
+            "value": "1",
+            "isDefault": true
+          },
+          {
+            "value": "0"
+          }
+        ]
+      },
+      {
+        "name": [
+          "MenuShowDelay"
+        ],
+        "path": [
+          "HKCU",
+          "Control Panel",
+          "Desktop"
+        ],
+        "key": "MenuShowDelay",
+        "type": "String",
+        "values": [
+          {
+            "value": "1",
+            "isDefault": true
+          },
+          {
+            "value": "200"
+          }
+        ]
+      },
+      {
+        "name": [
+          "MinAnimate"
+        ],
+        "path": [
+          "HKCU",
+          "Control Panel",
+          "Desktop",
+          "WindowMetrics"
+        ],
+        "key": "MinAnimate",
+        "type": "String",
+        "values": [
+          {
+            "value": "1",
+            "isDefault": true
+          },
+          {
+            "value": "0"
+          }
+        ]
+      },
+      {
+        "name": [
+          "KeyboardDelay"
+        ],
+        "path": [
+          "HKCU",
+          "Control Panel",
+          "Keyboard"
+        ],
+        "key": "KeyboardDelay",
+        "type": "Int32",
+        "values": [
+          {
+            "value": "1",
+            "isDefault": true
+          },
+          {
+            "value": "0"
+          }
+        ]
+      },
+      {
+        "name": [
+          "ListviewAlphaSelect"
+        ],
+        "path": [
+          "HKCU",
+          "Software",
+          "Microsoft",
+          "Windows",
+          "CurrentVersion",
+          "Explorer",
+          "Advanced"
+        ],
+        "key": "ListviewAlphaSelect",
+        "type": "Int32",
+        "values": [
+          {
+            "value": "1",
+            "isDefault": true
+          },
+          {
+            "value": "0"
+          }
+        ]
+      },
+      {
+        "name": [
+          "ListviewShadow"
+        ],
+        "path": [
+          "HKCU",
+          "Software",
+          "Microsoft",
+          "Windows",
+          "CurrentVersion",
+          "Explorer",
+          "Advanced"
+        ],
+        "key": "ListviewShadow",
+        "type": "Int32",
+        "values": [
+          {
+            "value": "1",
+            "isDefault": true
+          },
+          {
+            "value": "0"
+          }
+        ]
+      },
+      {
+        "name": [
+          "TaskbarAnimations"
+        ],
+        "path": [
+          "HKCU",
+          "Software",
+          "Microsoft",
+          "Windows",
+          "CurrentVersion",
+          "Explorer",
+          "Advanced"
+        ],
+        "key": "TaskbarAnimations",
+        "type": "Int32",
+        "values": [
+          {
+            "value": "1",
+            "isDefault": true
+          },
+          {
+            "value": "0"
+          }
+        ]
+      },
+      {
+        "name": [
+          "VisualFXSetting"
+        ],
+        "path": [
+          "HKCU",
+          "Software",
+          "Microsoft",
+          "Windows",
+          "CurrentVersion",
+          "Explorer",
+          "VisualEffects"
+        ],
+        "key": "VisualFXSetting",
+        "type": "Int32",
+        "values": [
+          {
+            "value": "1",
+            "isDefault": true
+          },
+          {
+            "value": "3"
+          }
+        ]
+      },
+      {
+        "name": [
+          "EnableAeroPeek"
+        ],
+        "path": [
+          "HKCU",
+          "Software",
+          "Microsoft",
+          "Windows",
+          "DWM"
+        ],
+        "key": "EnableAeroPeek",
+        "type": "Int32",
+        "values": [
+          {
+            "value": "1",
+            "isDefault": true
+          },
+          {
+            "value": "0"
+          }
+        ]
+      },
+      {
+        "name": [
+          "TaskbarMn"
+        ],
+        "path": [
+          "HKCU",
+          "Software",
+          "Microsoft",
+          "Windows",
+          "CurrentVersion",
+          "Explorer",
+          "Advanced"
+        ],
+        "key": "TaskbarMn",
+        "type": "Int32",
+        "values": [
+          {
+            "value": "1",
+            "isDefault": true
+          },
+          {
+            "value": "0"
+          }
+        ]
+      },
+      {
+        "name": [
+          "TaskbarDa"
+        ],
+        "path": [
+          "HKCU",
+          "Software",
+          "Microsoft",
+          "Windows",
+          "CurrentVersion",
+          "Explorer",
+          "Advanced"
+        ],
+        "key": "TaskbarDa",
+        "type": "Int32",
+        "values": [
+          {
+            "value": "1",
+            "isDefault": true
+          },
+          {
+            "value": "0"
+          }
+        ]
+      },
+      {
+        "name": [
+          "ShowTaskViewButton"
+        ],
+        "path": [
+          "HKCU",
+          "Software",
+          "Microsoft",
+          "Windows",
+          "CurrentVersion",
+          "Explorer",
+          "Advanced"
+        ],
+        "key": "ShowTaskViewButton",
+        "type": "Int32",
+        "values": [
+          {
+            "value": "1",
+            "isDefault": true
+          },
+          {
+            "value": "0"
+          }
+        ]
+      },
+      {
+        "name": [
+          "SearchboxTaskbarMode"
+        ],
+        "path": [
+          "HKCU",
+          "Software",
+          "Microsoft",
+          "Windows",
+          "CurrentVersion",
+          "Search"
+        ],
+        "key": "SearchboxTaskbarMode",
+        "type": "Int32",
+        "values": [
+          {
+            "value": "1",
+            "isDefault": true
+          },
+          {
+            "value": "0"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "name": [
+      "Windows",
+      "Tweak",
+      "DisableWpbtExecution"
+    ],
+    "tags": [
+      "z__Advanced Tweaks - CAUTION",
+      "If enabled then allows your computer vendor to execute a program each time it boots. It enables computer vendors to force install anti-theft software, software drivers, or a software program conveniently. This could also be a security risk."
+    ],
+    "handler": "Registry",
+    "settings": [
+      {
+        "name": [
+          "DisableWpbtExecution"
+        ],
+        "path": [
+          "HKLM",
+          "SYSTEM",
+          "CurrentControlSet",
+          "Control",
+          "Session Manager"
+        ],
+        "key": "DisableWpbtExecution",
+        "type": "Int32",
+        "values": [
+          {
+            "isDefault": true
+          },
+          {
+            "value": "1"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "name": [
+      "Windows",
+      "Tweak",
+      "RazerBlock"
+    ],
+    "tags": [
+      "z__Advanced Tweaks - CAUTION",
+      "Blocks ALL Razer Software installations. The hardware works fine without any software."
+    ],
+    "handler": "Registry",
+    "settings": [
+      {
+        "name": [
+          "SearchOrderConfig"
+        ],
+        "path": [
+          "HKLM",
+          "SOFTWARE",
+          "Microsoft",
+          "Windows",
+          "CurrentVersion",
+          "DriverSearching"
+        ],
+        "key": "SearchOrderConfig",
+        "type": "Int32",
+        "values": [
+          {
+            "value": "1",
+            "isDefault": true
+          },
+          {
+            "value": "0"
+          }
+        ]
+      },
+      {
+        "name": [
+          "DisableCoInstallers"
+        ],
+        "path": [
+          "HKLM",
+          "SOFTWARE",
+          "Microsoft",
+          "Windows",
+          "CurrentVersion",
+          "Device Installer"
+        ],
+        "key": "DisableCoInstallers",
+        "type": "Int32",
+        "values": [
+          {
+            "value": "0",
+            "isDefault": true
+          },
+          {
+            "value": "1"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "name": [
+      "Windows",
+      "Toggle",
+      "DarkMode"
+    ],
+    "tags": [
+      "Customize Preferences",
+      "Enable/Disable Dark Mode."
+    ],
+    "handler": "Registry",
+    "settings": [
+      {
+        "name": [
+          "AppsUseLightTheme"
+        ],
+        "path": [
+          "HKCU",
+          "SOFTWARE",
+          "Microsoft",
+          "Windows",
+          "CurrentVersion",
+          "Themes",
+          "Personalize"
+        ],
+        "key": "AppsUseLightTheme",
+        "type": "Int32",
+        "values": [
+          {
+            "value": "1",
+            "isDefault": true
+          },
+          {
+            "value": "0"
+          }
+        ]
+      },
+      {
+        "name": [
+          "SystemUsesLightTheme"
+        ],
+        "path": [
+          "HKCU",
+          "SOFTWARE",
+          "Microsoft",
+          "Windows",
+          "CurrentVersion",
+          "Themes",
+          "Personalize"
+        ],
+        "key": "SystemUsesLightTheme",
+        "type": "Int32",
+        "values": [
+          {
+            "value": "1",
+            "isDefault": true
+          },
+          {
+            "value": "0"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "name": [
+      "Windows",
+      "Toggle",
+      "BingSearch"
+    ],
+    "tags": [
+      "Customize Preferences",
+      "If enable then includes web search results from Bing in your Start Menu search."
+    ],
+    "handler": "Registry",
+    "settings": [
+      {
+        "name": [
+          "BingSearchEnabled"
+        ],
+        "path": [
+          "HKCU",
+          "Software",
+          "Microsoft",
+          "Windows",
+          "CurrentVersion",
+          "Search"
+        ],
+        "key": "BingSearchEnabled",
+        "type": "Int32",
+        "values": [
+          {
+            "value": "0"
+          },
+          {
+            "value": "1",
+            "isDefault": true
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "name": [
+      "Windows",
+      "Toggle",
+      "NumLock"
+    ],
+    "tags": [
+      "Customize Preferences",
+      "Toggle the Num Lock key state when your computer starts."
+    ],
+    "handler": "Registry",
+    "settings": [
+      {
+        "name": [
+          "InitialKeyboardIndicators"
+        ],
+        "path": [
+          "HKU",
+          ".Default",
+          "Control Panel",
+          "Keyboard"
+        ],
+        "key": "InitialKeyboardIndicators",
+        "type": "Int32",
+        "values": [
+          {
+            "value": "0",
+            "isDefault": true
+          },
+          {
+            "value": "2"
+          }
+        ]
+      },
+      {
+        "name": [
+          "InitialKeyboardIndicators"
+        ],
+        "path": [
+          "HKCU",
+          "Control Panel",
+          "Keyboard"
+        ],
+        "key": "InitialKeyboardIndicators",
+        "type": "Int32",
+        "values": [
+          {
+            "value": "0",
+            "isDefault": true
+          },
+          {
+            "value": "2"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "name": [
+      "Windows",
+      "Toggle",
+      "VerboseLogon"
+    ],
+    "tags": [
+      "Customize Preferences",
+      "Show detailed messages during the login process for troubleshooting and diagnostics."
+    ],
+    "handler": "Registry",
+    "settings": [
+      {
+        "name": [
+          "VerboseStatus"
+        ],
+        "path": [
+          "HKLM",
+          "SOFTWARE",
+          "Microsoft",
+          "Windows",
+          "CurrentVersion",
+          "Policies",
+          "System"
+        ],
+        "key": "VerboseStatus",
+        "type": "Int32",
+        "values": [
+          {
+            "value": "0",
+            "isDefault": true
+          },
+          {
+            "value": "1"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "name": [
+      "Windows",
+      "Toggle",
+      "StartMenuRecommendations"
+    ],
+    "tags": [
+      "Customize Preferences",
+      "If disabled then you will not see recommendations in the Start Menu. | Enables \u0027iseducationenvironment\u0027 | Relogin Required."
+    ],
+    "handler": "Registry",
+    "settings": [
+      {
+        "name": [
+          "HideRecommendedSection"
+        ],
+        "path": [
+          "HKLM",
+          "SOFTWARE",
+          "Microsoft",
+          "PolicyManager",
+          "current",
+          "device",
+          "Start"
+        ],
+        "key": "HideRecommendedSection",
+        "type": "Int32",
+        "values": [
+          {
+            "value": "1"
+          },
+          {
+            "value": "0",
+            "isDefault": true
+          }
+        ]
+      },
+      {
+        "name": [
+          "IsEducationEnvironment"
+        ],
+        "path": [
+          "HKLM",
+          "SOFTWARE",
+          "Microsoft",
+          "PolicyManager",
+          "current",
+          "device",
+          "Education"
+        ],
+        "key": "IsEducationEnvironment",
+        "type": "Int32",
+        "values": [
+          {
+            "value": "1"
+          },
+          {
+            "value": "0",
+            "isDefault": true
+          }
+        ]
+      },
+      {
+        "name": [
+          "HideRecommendedSection"
+        ],
+        "path": [
+          "HKLM",
+          "SOFTWARE",
+          "Policies",
+          "Microsoft",
+          "Windows",
+          "Explorer"
+        ],
+        "key": "HideRecommendedSection",
+        "type": "Int32",
+        "values": [
+          {
+            "value": "1"
+          },
+          {
+            "value": "0",
+            "isDefault": true
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "name": [
+      "Windows",
+      "Toggle",
+      "HideSettingsHome"
+    ],
+    "tags": [
+      "Customize Preferences",
+      "Removes the Home page in the Windows Settings app."
+    ],
+    "handler": "Registry",
+    "settings": [
+      {
+        "name": [
+          "SettingsPageVisibility"
+        ],
+        "path": [
+          "HKCU",
+          "Software",
+          "Microsoft",
+          "Windows",
+          "CurrentVersion",
+          "Policies",
+          "Explorer"
+        ],
+        "key": "SettingsPageVisibility",
+        "type": "String",
+        "values": [
+          {
+            "value": "show:home",
+            "isDefault": true
+          },
+          {
+            "value": "hide:home"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "name": [
+      "Windows",
+      "Toggle",
+      "SnapWindow"
+    ],
+    "tags": [
+      "Customize Preferences",
+      "If enabled you can align windows by dragging them. | Relogin Required"
+    ],
+    "handler": "Registry",
+    "settings": [
+      {
+        "name": [
+          "WindowArrangementActive"
+        ],
+        "path": [
+          "HKCU",
+          "Control Panel",
+          "Desktop"
+        ],
+        "key": "WindowArrangementActive",
+        "type": "String",
+        "values": [
+          {
+            "value": "0"
+          },
+          {
+            "value": "1",
+            "isDefault": true
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "name": [
+      "Windows",
+      "Toggle",
+      "SnapFlyout"
+    ],
+    "tags": [
+      "Customize Preferences",
+      "If enabled then Snap preview is disabled when maximize button is hovered."
+    ],
+    "handler": "Registry",
+    "settings": [
+      {
+        "name": [
+          "EnableSnapAssistFlyout"
+        ],
+        "path": [
+          "HKCU",
+          "Software",
+          "Microsoft",
+          "Windows",
+          "CurrentVersion",
+          "Explorer",
+          "Advanced"
+        ],
+        "key": "EnableSnapAssistFlyout",
+        "type": "Int32",
+        "values": [
+          {
+            "value": "0"
+          },
+          {
+            "value": "1",
+            "isDefault": true
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "name": [
+      "Windows",
+      "Toggle",
+      "SnapSuggestion"
+    ],
+    "tags": [
+      "Customize Preferences",
+      "If enabled then you will get suggestions to snap other applications in the left over spaces."
+    ],
+    "handler": "Registry",
+    "settings": [
+      {
+        "name": [
+          "SnapAssist"
+        ],
+        "path": [
+          "HKCU",
+          "Software",
+          "Microsoft",
+          "Windows",
+          "CurrentVersion",
+          "Explorer",
+          "Advanced"
+        ],
+        "key": "SnapAssist",
+        "type": "Int32",
+        "values": [
+          {
+            "value": "0"
+          },
+          {
+            "value": "1",
+            "isDefault": true
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "name": [
+      "Windows",
+      "Toggle",
+      "MouseAcceleration"
+    ],
+    "tags": [
+      "Customize Preferences",
+      "If Enabled then Cursor movement is affected by the speed of your physical mouse movements."
+    ],
+    "handler": "Registry",
+    "settings": [
+      {
+        "name": [
+          "MouseSpeed"
+        ],
+        "path": [
+          "HKCU",
+          "Control Panel",
+          "Mouse"
+        ],
+        "key": "MouseSpeed",
+        "type": "Int32",
+        "values": [
+          {
+            "value": "0"
+          },
+          {
+            "value": "1",
+            "isDefault": true
+          }
+        ]
+      },
+      {
+        "name": [
+          "MouseThreshold1"
+        ],
+        "path": [
+          "HKCU",
+          "Control Panel",
+          "Mouse"
+        ],
+        "key": "MouseThreshold1",
+        "type": "Int32",
+        "values": [
+          {
+            "value": "0"
+          },
+          {
+            "value": "6",
+            "isDefault": true
+          }
+        ]
+      },
+      {
+        "name": [
+          "MouseThreshold2"
+        ],
+        "path": [
+          "HKCU",
+          "Control Panel",
+          "Mouse"
+        ],
+        "key": "MouseThreshold2",
+        "type": "Int32",
+        "values": [
+          {
+            "value": "0"
+          },
+          {
+            "value": "10",
+            "isDefault": true
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "name": [
+      "Windows",
+      "Toggle",
+      "StickyKeys"
+    ],
+    "tags": [
+      "Customize Preferences",
+      "If Enabled then Sticky Keys is activated - Sticky keys is an accessibility feature of some graphical user interfaces which assists users who have physical disabilities or help users reduce repetitive strain injury."
+    ],
+    "handler": "Registry",
+    "settings": [
+      {
+        "name": [
+          "Flags"
+        ],
+        "path": [
+          "HKCU",
+          "Control Panel",
+          "Accessibility",
+          "StickyKeys"
+        ],
+        "key": "Flags",
+        "type": "Int32",
+        "values": [
+          {
+            "value": "58"
+          },
+          {
+            "value": "510",
+            "isDefault": true
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "name": [
+      "Windows",
+      "Toggle",
+      "HiddenFiles"
+    ],
+    "tags": [
+      "Customize Preferences",
+      "If Enabled then Hidden Files will be shown."
+    ],
+    "handler": "Registry",
+    "settings": [
+      {
+        "name": [
+          "Hidden"
+        ],
+        "path": [
+          "HKCU",
+          "Software",
+          "Microsoft",
+          "Windows",
+          "CurrentVersion",
+          "Explorer",
+          "Advanced"
+        ],
+        "key": "Hidden",
+        "type": "Int32",
+        "values": [
+          {
+            "value": "0",
+            "isDefault": true
+          },
+          {
+            "value": "1"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "name": [
+      "Windows",
+      "Toggle",
+      "ShowExt"
+    ],
+    "tags": [
+      "Customize Preferences",
+      "If enabled then File extensions (e.g., .txt, .jpg) are visible."
+    ],
+    "handler": "Registry",
+    "settings": [
+      {
+        "name": [
+          "HideFileExt"
+        ],
+        "path": [
+          "HKCU",
+          "Software",
+          "Microsoft",
+          "Windows",
+          "CurrentVersion",
+          "Explorer",
+          "Advanced"
+        ],
+        "key": "HideFileExt",
+        "type": "Int32",
+        "values": [
+          {
+            "value": "1",
+            "isDefault": true
+          },
+          {
+            "value": "0"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "name": [
+      "Windows",
+      "Toggle",
+      "TaskbarSearch"
+    ],
+    "tags": [
+      "Customize Preferences",
+      "If Enabled Search Button will be on the taskbar."
+    ],
+    "handler": "Registry",
+    "settings": [
+      {
+        "name": [
+          "SearchboxTaskbarMode"
+        ],
+        "path": [
+          "HKCU",
+          "Software",
+          "Microsoft",
+          "Windows",
+          "CurrentVersion",
+          "Search"
+        ],
+        "key": "SearchboxTaskbarMode",
+        "type": "Int32",
+        "values": [
+          {
+            "value": "0"
+          },
+          {
+            "value": "1",
+            "isDefault": true
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "name": [
+      "Windows",
+      "Toggle",
+      "TaskView"
+    ],
+    "tags": [
+      "Customize Preferences",
+      "If Enabled then Task View Button in Taskbar will be shown."
+    ],
+    "handler": "Registry",
+    "settings": [
+      {
+        "name": [
+          "ShowTaskViewButton"
+        ],
+        "path": [
+          "HKCU",
+          "Software",
+          "Microsoft",
+          "Windows",
+          "CurrentVersion",
+          "Explorer",
+          "Advanced"
+        ],
+        "key": "ShowTaskViewButton",
+        "type": "Int32",
+        "values": [
+          {
+            "value": "0"
+          },
+          {
+            "value": "1",
+            "isDefault": true
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "name": [
+      "Windows",
+      "Toggle",
+      "TaskbarWidgets"
+    ],
+    "tags": [
+      "Customize Preferences",
+      "If Enabled then Widgets Button in Taskbar will be shown."
+    ],
+    "handler": "Registry",
+    "settings": [
+      {
+        "name": [
+          "TaskbarDa"
+        ],
+        "path": [
+          "HKCU",
+          "Software",
+          "Microsoft",
+          "Windows",
+          "CurrentVersion",
+          "Explorer",
+          "Advanced"
+        ],
+        "key": "TaskbarDa",
+        "type": "Int32",
+        "values": [
+          {
+            "value": "0"
+          },
+          {
+            "value": "1",
+            "isDefault": true
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "name": [
+      "Windows",
+      "Toggle",
+      "TaskbarAlignment"
+    ],
+    "tags": [
+      "Customize Preferences",
+      "[Windows 11] If Enabled then the Taskbar Items will be shown on the Center, otherwise the Taskbar Items will be shown on the Left."
+    ],
+    "handler": "Registry",
+    "settings": [
+      {
+        "name": [
+          "TaskbarAl"
+        ],
+        "path": [
+          "HKCU",
+          "Software",
+          "Microsoft",
+          "Windows",
+          "CurrentVersion",
+          "Explorer",
+          "Advanced"
+        ],
+        "key": "TaskbarAl",
+        "type": "Int32",
+        "values": [
+          {
+            "value": "0"
+          },
+          {
+            "value": "1",
+            "isDefault": true
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "name": [
+      "Windows",
+      "Toggle",
+      "DetailedBSoD"
+    ],
+    "tags": [
+      "Customize Preferences",
+      "If Enabled then you will see a detailed Blue Screen of Death (BSOD) with more information."
+    ],
+    "handler": "Registry",
+    "settings": [
+      {
+        "name": [
+          "DisplayParameters"
+        ],
+        "path": [
+          "HKLM",
+          "SYSTEM",
+          "CurrentControlSet",
+          "Control",
+          "CrashControl"
+        ],
+        "key": "DisplayParameters",
+        "type": "Int32",
+        "values": [
+          {
+            "value": "0",
+            "isDefault": true
+          },
+          {
+            "value": "1"
+          }
+        ]
+      },
+      {
+        "name": [
+          "DisableEmoticon"
+        ],
+        "path": [
+          "HKLM",
+          "SYSTEM",
+          "CurrentControlSet",
+          "Control",
+          "CrashControl"
+        ],
+        "key": "DisableEmoticon",
+        "type": "Int32",
+        "values": [
+          {
+            "value": "0",
+            "isDefault": true
+          },
+          {
+            "value": "1"
+          }
+        ]
+      }
+    ]
+  }
+]
