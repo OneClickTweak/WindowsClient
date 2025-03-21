@@ -23,7 +23,7 @@ public class SettingsParser(SettingsHandlerCollection settingsHandlers)
 
     public IEnumerable<Setting> FlattenSettings(Setting source, SettingsHandlerCollection handlers, Setting? current = null)
     {
-        current ??= source.CreateCopy();
+        current ??= Clone(source);
         if (source.Settings?.Any() != true)
         {
             yield return current;
@@ -32,8 +32,8 @@ public class SettingsParser(SettingsHandlerCollection settingsHandlers)
 
         foreach (var item in source.Settings)
         {
-            var copy = item.CreateCopy();
-            copy.MergeTo(current);
+            var copy = Clone(item);
+            AppendTo(current, copy);
             if (item.Settings != null)
             {
                 foreach (var subItem in FlattenSettings(item, handlers, copy))
@@ -44,6 +44,39 @@ public class SettingsParser(SettingsHandlerCollection settingsHandlers)
             else
             {
                 yield return copy;
+            }
+        }
+    }
+
+    private Setting Clone(Setting setting)
+    {
+        return setting with
+        {
+            Settings = null,
+            Path = setting.Path?.ToList(),
+            Values = setting.Values?.Select(x => x with { }).ToList(),
+            Options = setting.Options.ToDictionary(StringComparer.OrdinalIgnoreCase)
+        };
+    }
+
+    private void AppendTo(Setting source, Setting destination)
+    {
+        destination.Platform ??= source.Platform;
+        destination.Name = source.Name.Concat(destination.Name).ToList();
+        destination.Tags = (source.Tags ?? []).Concat(destination.Tags ?? []).ToHashSet();
+        destination.Handler ??= source.Handler;
+        destination.Scope ??= source.Scope;
+        destination.Path ??= source.Path?.ToList();
+        destination.Key ??= source.Key;
+        destination.Type ??= source.Type;
+        destination.MinVersion ??= source.MinVersion;
+        destination.MaxVersion ??= source.MaxVersion;
+        destination.Values ??= source.Values?.ToList();
+        foreach (var option in source.Options)
+        {
+            if (!destination.Options.TryGetValue(option.Key, out var optionValue) || string.IsNullOrEmpty(optionValue))
+            {
+                destination.Options[option.Key] = option.Value;
             }
         }
     }

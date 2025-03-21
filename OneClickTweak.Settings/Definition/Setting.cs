@@ -5,39 +5,6 @@ namespace OneClickTweak.Settings.Definition;
 
 public record Setting
 {
-    public Setting CreateCopy()
-    {
-        return this with
-        {
-            Settings = null,
-            Path = Path?.ToList(),
-            Values = Values?.Select(x => x with { }).ToList(),
-            Options = Options.ToDictionary(StringComparer.OrdinalIgnoreCase)
-        };
-    }
-
-    public void MergeTo(Setting setting)
-    {
-        Platform ??= setting.Platform;
-        Name = setting.Name.Concat(Name).ToList();
-        Tags = (setting.Tags ?? []).Concat(Tags ?? []).ToHashSet();
-        Handler ??= setting.Handler;
-        Scope ??= setting.Scope;
-        Path ??= setting.Path?.ToList();
-        Key ??= setting.Key;
-        Type ??= setting.Type;
-        MinVersion ??= setting.MinVersion;
-        MaxVersion ??= setting.MaxVersion;
-        Values ??= setting.Values?.ToList();
-        foreach (var option in setting.Options)
-        {
-            if (!Options.TryGetValue(option.Key, out var optionValue) || string.IsNullOrEmpty(optionValue))
-            {
-                Options[option.Key] = option.Value;
-            }
-        }
-    }
-
     /// <summary>
     /// Platforms the setting version applies to
     /// </summary>
