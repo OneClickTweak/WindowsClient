@@ -14,7 +14,7 @@ public class TestAdbHandler(ITestOutputHelper outputHelper)
         var users = Enumerable.Empty<UserInstance>();
         foreach (var instance in handler.GetFoundInstances(users))
         {
-            outputHelper.WriteLine($"Found instance: {instance.Path}");
+            outputHelper.WriteLine($"Found instance: {instance.Options.GetValueOrDefault(AdbHandler.DeviceNameKey)}");
         }
     }
 }

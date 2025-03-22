@@ -17,14 +17,35 @@ public class WinUtilConverter
             Name = GetName(key),
             Tags = entry.Description == null ? [entry.Category] : [entry.Category, entry.Description],
             Handler = "Registry",
-            Settings = entry.Registry.Select(r => new Setting
-            {
-                Name = [r.Name],
-                Path = r.Path.Split(['\\', ':'], StringSplitOptions.RemoveEmptyEntries),
-                Type = RegistryHandler.GetSettingType(r.Type),
-                Key = r.Name,
-                Values = GetValues(r).ToList()
-            }).ToList()
+            Settings = entry.Registry.Select(CreateSetting).ToList()
+        };
+    }
+
+    private Setting CreateSetting(WinUtilRegistry registry)
+    {
+        var scope = SettingScope.Machine;
+        var path = registry.Path.Split(['\\', ':'], StringSplitOptions.RemoveEmptyEntries);
+        if (path.FirstOrDefault() == "HKCU")
+        {
+            path = path.Skip(1).ToArray();
+            scope = SettingScope.User;
+        } else if (path.FirstOrDefault() == "HKLM")
+        {
+            path = path.Skip(1).ToArray();
+        }
+        else
+        {
+            throw new NotImplementedException(path.FirstOrDefault());
+        }
+
+        return new Setting
+        {
+            Name = [registry.Name],
+            Scope = scope,
+            Path = path,
+            Type = RegistryHandler.GetSettingType(registry.Type),
+            Key = registry.Name,
+            Values = GetValues(registry).ToList()
         };
     }
 

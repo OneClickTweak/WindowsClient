@@ -71,5 +71,5 @@ public record Setting
     /// <summary>
     /// Custom options used by handler
     /// </summary>
-    public IDictionary<string, string> Options { get; set; } = new Dictionary<string, string>(StringComparer.OrdinalIgnoreCase);
+    public Dictionary<string, string> Options { get; set; } = new(StringComparer.OrdinalIgnoreCase);
 }

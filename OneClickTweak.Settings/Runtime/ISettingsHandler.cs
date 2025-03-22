@@ -38,5 +38,5 @@ public interface ISettingsHandler
         }
     }
 
-    public static readonly ICollection<SettingScope> AllScopes = [ SettingScope.Machine, SettingScope.CurrentUser, SettingScope.DefaultUser, SettingScope.OtherUser ];
+    private static readonly IEnumerable<SettingScope> AllScopes = Enum.GetValues(typeof(SettingScope)).Cast<SettingScope>().ToList();
 }

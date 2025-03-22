@@ -12,23 +12,29 @@ public class GroupPolicyHandler() : WindowsHandler("GPO")
     {
         yield return new SettingsInstance
         {
+            Handler = Name,
             Scope = SettingScope.Machine,
-            Version = Environment.OSVersion.Version.ToString()
+            Version = Environment.OSVersion.Version.ToString(),
+            Options = new Dictionary<string, object>()
         };
 
         yield return new SettingsInstance
         {
-            Scope = SettingScope.DefaultUser,
-            Version = Environment.OSVersion.Version.ToString()
+            Handler = Name,
+            Scope = SettingScope.User,
+            Version = Environment.OSVersion.Version.ToString(),
+            Options = new Dictionary<string, object>()
         };
 
         foreach (var user in users)
         {
             yield return new SettingsInstance
             {
-                Scope = user.IsCurrent ? SettingScope.CurrentUser : SettingScope.OtherUser,
+                Handler = Name,
+                Scope = SettingScope.User,
                 User = user,
-                Version = Environment.OSVersion.Version.ToString()
+                Version = Environment.OSVersion.Version.ToString(),
+                Options = new Dictionary<string, object>()
             };
         }
     }

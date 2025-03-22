@@ -5,7 +5,7 @@ public record SettingValue
     /// <summary>
     /// Translation key relative to definition key
     /// </summary>
-    public string Name { get; set; }
+    public string? Name { get; set; }
 
     /// <summary>
     /// Serialized value
