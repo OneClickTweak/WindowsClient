@@ -6,7 +6,7 @@
     "scope": "Machine",
     "settings": [
       {
-        "name": [ "Registry" ],
+        "name": "Registry",
         "handler": "Registry",
         "path": [ "SYSTEM", "CurrentControlSet", "Control", "Power" ],
         "key": "HibernateEnabled",
@@ -17,7 +17,7 @@
         ]
       },
       {
-        "name": [ "GPO" ],
+        "name": "GPO",
         "handler": "GPO",
         "path": [ "SYSTEM", "Policies", "Control", "Power" ],
         "key": "HibernateDisabled",

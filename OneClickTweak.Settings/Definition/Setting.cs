@@ -14,7 +14,8 @@ public record Setting
     /// <summary>
     /// Setting name and also a translation key
     /// </summary>
-    public required string[] Name { get; set; }
+    [JsonConverter(typeof(SingleOrArrayConverter<List<string>, string>))]
+    public required List<string> Name { get; set; }
     
     /// <summary>
     /// Tags used to describe the setting
@@ -35,7 +36,8 @@ public record Setting
     /// <summary>
     /// Path within the handler context
     /// </summary>
-    public ICollection<string>? Path { get; set; }
+    [JsonConverter(typeof(SingleOrArrayConverter<List<string>, string>))]
+    public List<string>? Path { get; set; }
 
     /// <summary>
     /// Value key

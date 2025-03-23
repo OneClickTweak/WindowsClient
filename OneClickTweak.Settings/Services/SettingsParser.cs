@@ -62,7 +62,7 @@ public class SettingsParser(SettingsHandlerCollection settingsHandlers)
     private void AppendTo(Setting source, Setting destination)
     {
         destination.Platform ??= source.Platform;
-        destination.Name = source.Name.Concat(destination.Name).ToArray();
+        destination.Name = source.Name.Concat(destination.Name).ToList();
         destination.Tags = (source.Tags ?? []).Concat(destination.Tags ?? []).ToHashSet();
         destination.Handler ??= source.Handler;
         destination.Scope ??= source.Scope;

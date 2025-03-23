@@ -103,7 +103,7 @@ public class RegistryHandler() : WindowsHandler("Registry")
         var keyPath = string.Join('\\', selected.Setting.Path);
         var keyName = selected.Setting.Key;
         var conversion = ConversionBySettingType[selected.Setting.Type.Value];
-        var keyValue = selected.CustomValue ?? selected.Value.Value;
+        var keyValue = selected.Value.Value;
         var converted = conversion.ConvertTo(keyValue);
 
         var subKey = key.OpenSubKey(keyPath, RegistryKeyPermissionCheck.ReadWriteSubTree);

@@ -7,7 +7,7 @@ public class WinUtilConverter
 {
     public bool CanConvert(string key, WinUtilEntry entry)
     {
-        return entry.Registry.Any() && GetName(key).Length > 0;
+        return entry.Registry.Any() && GetName(key).Count > 0;
     }
 
     public Setting Convert(string key, WinUtilEntry entry)
@@ -48,7 +48,7 @@ public class WinUtilConverter
         {
             Name = [registry.Name],
             Scope = scope,
-            Path = path,
+            Path = path.ToList(),
             Type = RegistryHandler.GetSettingType(registry.Type),
             Key = registry.Name,
             Values = GetValues(registry).ToList()
@@ -73,7 +73,7 @@ public class WinUtilConverter
         };
     }
 
-    private string[] GetName(string key)
+    private List<string> GetName(string key)
     {
         if (key.StartsWith("WPFTweaks"))
         {

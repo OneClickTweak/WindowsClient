@@ -1,3 +1,6 @@
+using System.Text.Json.Serialization;
+using OneClickTweak.Settings.Serialization;
+
 namespace OneClickTweak.Settings.Definition;
 
 public record SettingValue
@@ -5,7 +8,8 @@ public record SettingValue
     /// <summary>
     /// Translation key relative to definition key
     /// </summary>
-    public string? Name { get; set; }
+    [JsonConverter(typeof(SingleOrArrayConverter<List<string>, string>))]
+    public List<string>? Name { get; set; }
 
     /// <summary>
     /// Serialized value

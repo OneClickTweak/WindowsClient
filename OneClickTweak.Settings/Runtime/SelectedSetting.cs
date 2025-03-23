@@ -7,11 +7,11 @@ public class SelectedSetting
     public required Setting Setting { get; init; }
     
     public required SettingValue Value { get; init; }
-    
-    public string? CustomValue { get; init; }
 
     public override string ToString()
     {
-        return $"{string.Join('.', Setting.Name)} {CustomValue ?? Value.Name}";
+        var name = string.Join('.', Setting.Name);
+        var value = Value.Name?.Count > 0 ? string.Join('.', Value.Name) : Value.Value;
+        return $"{name}: {value}";
     }
 }
