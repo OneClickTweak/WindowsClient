@@ -5,7 +5,8 @@
         <Nullable>enable</Nullable>
         <ImplicitUsings>enable</ImplicitUsings>
         <InvariantGlobalization>true</InvariantGlobalization>
-        <PublishAot>true</PublishAot>
+        <PublishSingleFile>true</PublishSingleFile>
+        <PublishReadyToRun>true</PublishReadyToRun>
         <UserSecretsId>dotnet-OneClickTweak.Service-0b516258-9222-4e73-b411-76046927879b</UserSecretsId>
         <ServerGarbageCollection>true</ServerGarbageCollection>
     </PropertyGroup>

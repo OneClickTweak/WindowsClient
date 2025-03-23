@@ -12,9 +12,9 @@ public class TestAdbHandler(ITestOutputHelper outputHelper)
     {
         var handler = new AdbHandler();
         var users = Enumerable.Empty<UserInstance>();
-        foreach (var instance in handler.GetFoundInstances(users))
+        foreach (var instance in handler.GetFoundInstances(users).OfType<AdbInstance>())
         {
-            outputHelper.WriteLine($"Found instance: {instance.Options.GetValueOrDefault(AdbHandler.DeviceNameKey)}");
+            outputHelper.WriteLine($"Found instance: {instance.Device.Name}");
         }
     }
 }

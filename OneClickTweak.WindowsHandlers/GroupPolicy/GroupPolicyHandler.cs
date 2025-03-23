@@ -10,31 +10,25 @@ public class GroupPolicyHandler() : WindowsHandler("GPO")
 {
     public override IEnumerable<SettingsInstance> GetFoundInstances(IEnumerable<UserInstance> users)
     {
-        yield return new SettingsInstance
+        yield return new GroupPolicyInstance
         {
-            Handler = Name,
             Scope = SettingScope.Machine,
-            Version = Environment.OSVersion.Version.ToString(),
-            Options = new Dictionary<string, object>()
+            Version = Environment.OSVersion.Version.ToString()
         };
 
-        yield return new SettingsInstance
+        yield return new GroupPolicyInstance
         {
-            Handler = Name,
             Scope = SettingScope.User,
-            Version = Environment.OSVersion.Version.ToString(),
-            Options = new Dictionary<string, object>()
+            Version = Environment.OSVersion.Version.ToString()
         };
 
         foreach (var user in users)
         {
-            yield return new SettingsInstance
+            yield return new GroupPolicyInstance
             {
-                Handler = Name,
                 Scope = SettingScope.User,
                 User = user,
-                Version = Environment.OSVersion.Version.ToString(),
-                Options = new Dictionary<string, object>()
+                Version = Environment.OSVersion.Version.ToString()
             };
         }
     }

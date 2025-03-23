@@ -9,54 +9,32 @@ namespace OneClickTweak.WindowsHandlers.Registry;
 
 public class RegistryHandler() : WindowsHandler("Registry")
 {
-    private const string RegistryOptionKey = "Registry";
-    private const string LocationOptionKey = "Location";
-    private const string HiveOptionKey = "Hive";
-
     public override IEnumerable<SettingsInstance> GetFoundInstances(IEnumerable<UserInstance> users)
     {
-        yield return new SettingsInstance
+        yield return new RegistryInstance
         {
-            Handler = Name,
             Scope = SettingScope.Machine,
             Version = Environment.OSVersion.Version.ToString(),
-            Options = new Dictionary<string, object>
-            {
-                { RegistryOptionKey, "HKEY_LOCAL_MACHINE" }
-            }
+            RootKey = "HKEY_LOCAL_MACHINE"
         };
 
-        yield return new SettingsInstance
+        yield return new RegistryInstance
         {
-            Handler = Name,
             Scope = SettingScope.User,
             Version = Environment.OSVersion.Version.ToString(),
-            Options = new Dictionary<string, object>
-            {
-                { RegistryOptionKey, "HKEY_CURRENT_USER" }, // HKU:\\.Default
-                { LocationOptionKey, Environment.ExpandEnvironmentVariables(@"%SYSTEMROOT%\Profiles\Default User\NTUser.dat") }
-            }
+            RootKey = "HKEY_CURRENT_USER",
+            Location = Environment.ExpandEnvironmentVariables(@"%SYSTEMROOT%\Profiles\Default User\NTUser.dat")
         };
 
         foreach (var user in users)
         {
-            var options = new Dictionary<string, object>
+            yield return new RegistryInstance
             {
-                { RegistryOptionKey, "HKEY_CURRENT_USER" }
-            };
-
-            if (!user.IsCurrent)
-            {
-                options.Add(LocationOptionKey, Path.Join(user.LocalPath, "NTUser.dat"));
-            }
-            
-            yield return new SettingsInstance
-            {
-                Handler = Name,
                 Scope = SettingScope.User,
                 User = user,
                 Version = Environment.OSVersion.Version.ToString(),
-                Options = options
+                RootKey = "HKEY_CURRENT_USER",
+                Location = user.IsCurrent ? null : Path.Join(user.LocalPath, "NTUser.dat")
             };
         }
     }
@@ -64,9 +42,9 @@ public class RegistryHandler() : WindowsHandler("Registry")
     public void AcquireInstance(ICollection<SettingsInstance> instances, ILogger logger)
     {
         var privilegesAcquired = false;
-        foreach (var instance in instances.Where(x => x.Handler == Name))
+        foreach (var instance in instances.OfType<RegistryInstance>())
         {
-            if (instance.Scope == SettingScope.User && instance.Options.TryGetValue(LocationOptionKey, out var value) && value is string location)
+            if (instance.Scope == SettingScope.User && instance.Location != null)
             {
                 if (!privilegesAcquired)
                 {
@@ -75,15 +53,15 @@ public class RegistryHandler() : WindowsHandler("Registry")
                     privilegesAcquired = true;
                 }
 
-                var (hive, error) = Hive.LoadFromFile(location);
+                // Loads the hive;
+                var (hive, error) = Hive.LoadFromFile(instance.Location);
                 if (error != null)
                 {
                     logger.LogError(error);
                 }
                 else if (hive != null)
                 {
-                    // Loads the hive;
-                    instance.Options[HiveOptionKey] = hive;
+                    instance.Hive = hive;
                 }
             }
         }
@@ -91,22 +69,20 @@ public class RegistryHandler() : WindowsHandler("Registry")
 
     public void ApplySettings(SettingsInstance instance, Setting setting)
     {
-        if (setting.Handler != Name)
+        if (instance is RegistryInstance registryInstance)
         {
-            throw new InvalidOperationException("Handler mismatch");
+            var key = GetRegistryKey(registryInstance);
         }
-
-        var key = GetRegistryKey(instance);
     }
 
-    private RegistryKey GetRegistryKey(SettingsInstance instance)
+    private RegistryKey GetRegistryKey(RegistryInstance instance)
     {
         switch (instance.Scope)
         {
             case SettingScope.Machine:
                 return Microsoft.Win32.Registry.LocalMachine;
-            case SettingScope.User when instance.Options.TryGetValue(HiveOptionKey, out var value) && value is Hive hive && hive.RootKey != null:
-                return hive.RootKey;
+            case SettingScope.User when instance.Hive?.RootKey != null:
+                return instance.Hive.RootKey;
             case SettingScope.User:
                 return Microsoft.Win32.Registry.CurrentUser;
             default:
@@ -117,12 +93,13 @@ public class RegistryHandler() : WindowsHandler("Registry")
     public void ReleaseInstance(ICollection<SettingsInstance> instances)
     {
         var privilegesAcquired = false;
-        foreach (var instance in instances.Where(x => x.Handler == Name))
+        foreach (var instance in instances.OfType<RegistryInstance>())
         {
-            if (instance.Scope == SettingScope.User && instance.Options.TryGetValue(HiveOptionKey, out var value) && value is Hive hive)
+            if (instance.Scope == SettingScope.User && instance.Hive != null)
             {
                 // Unloads the hive
-                hive.SaveAndUnload();
+                instance.Hive.SaveAndUnload();
+                instance.Hive = null;
                 privilegesAcquired = true;
             }
         }

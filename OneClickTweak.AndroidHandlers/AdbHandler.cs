@@ -10,8 +10,6 @@ namespace OneClickTweak.AndroidHandlers;
 
 public class AdbHandler() : BaseHandler("ADB")
 {
-    public const string DeviceNameKey = "ADB";
-
     public string AdbPath { get; set; } = "adb";
 
     public bool AdbRestartIfNewer { get; set; } = false;
@@ -45,13 +43,8 @@ public class AdbHandler() : BaseHandler("ADB")
             {
                 yield return new AdbInstance
                 {
-                    Handler = Name,
                     Scope = SettingScope.Machine,
-                    Device = device,
-                    Options = new Dictionary<string, object>
-                    {
-                        { DeviceNameKey, device.Name }
-                    }
+                    Device = device
                 };   
             }
         }
