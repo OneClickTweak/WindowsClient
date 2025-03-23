@@ -12,9 +12,9 @@ public record Setting
     public SupportedPlatform? Platform { get; set; }
 
     /// <summary>
-    /// Translation key relative to definition key, or absolute if contains "."
+    /// Setting name and also a translation key
     /// </summary>
-    public required ICollection<string> Name { get; set; }
+    public required string[] Name { get; set; }
     
     /// <summary>
     /// Tags used to describe the setting
@@ -61,15 +61,15 @@ public record Setting
     /// <summary>
     /// Nested merged specific values
     /// </summary>
-    public ICollection<Setting>? Settings { get; set; }
+    public List<Setting>? Settings { get; set; }
 
     /// <summary>
     /// Predefined possible value choices, if applicable
     /// </summary>
-    public ICollection<SettingValue>? Values { get; set; }
+    public List<SettingValue>? Values { get; set; }
 
     /// <summary>
-    /// Custom options used by handler
+    /// Custom options used by a respective handler
     /// </summary>
     public Dictionary<string, string> Options { get; set; } = new(StringComparer.OrdinalIgnoreCase);
 }

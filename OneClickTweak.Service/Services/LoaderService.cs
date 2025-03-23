@@ -15,7 +15,7 @@ public class LoaderService(
     
     private readonly ConcurrentDictionary<Type, DateTime?> nextUpdate = new();
 
-    private HashSet<string> canWriteUsers = new();
+    private HashSet<string> canWriteUsers = [];
 
     public async Task<DateTime> DetectTickAsync(CancellationToken cancellationToken)
     {

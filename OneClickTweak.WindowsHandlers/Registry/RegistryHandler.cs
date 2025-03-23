@@ -67,15 +67,65 @@ public class RegistryHandler() : WindowsHandler("Registry")
         }
     }
 
-    public void ApplySettings(SettingsInstance instance, Setting setting)
+    public bool ApplySettings(SettingsInstance instance, SelectedSetting selected, ILogger logger)
     {
-        if (instance is RegistryInstance registryInstance)
+        if (instance is not RegistryInstance registryInstance)
         {
-            var key = GetRegistryKey(registryInstance);
+            logger.LogError($"Invalid instance for {selected}");
+            return false;
         }
+
+        var key = GetRegistryKey(registryInstance);
+        if (key == null)
+        {
+            logger.LogError($"Unknown registry root key for {selected}");
+            return false;
+        }
+
+        if (selected.Setting.Type == null || !ConversionBySettingType.TryGetValue(selected.Setting.Type.Value, out var keyType))
+        {
+            logger.LogError($"Undetermined type for {selected}");
+            return false;
+        }
+
+        if (selected.Setting.Path == null || selected.Setting.Path.Count == 0 || selected.Setting.Path.Any(string.IsNullOrWhiteSpace))
+        {
+            logger.LogError($"Undetermined path for {selected}");
+            return false;
+        }
+
+        if (string.IsNullOrWhiteSpace(selected.Setting.Key))
+        {
+            logger.LogError($"Undetermined key for {selected}");
+            return false;
+        }
+
+        var keyPath = string.Join('\\', selected.Setting.Path);
+        var keyName = selected.Setting.Key;
+        var conversion = ConversionBySettingType[selected.Setting.Type.Value];
+        var keyValue = selected.CustomValue ?? selected.Value.Value;
+        var converted = conversion.ConvertTo(keyValue);
+
+        var subKey = key.OpenSubKey(keyPath, RegistryKeyPermissionCheck.ReadWriteSubTree);
+        if (subKey == null)
+        {
+            logger.LogError($"No permissions to access {selected}");
+            return false;
+        }
+
+        if (converted == null)
+        {
+            subKey.DeleteValue(keyName);
+        }
+        else
+        {
+            subKey.SetValue(keyName, converted, conversion.ValueKind);
+        }
+
+        return true;
     }
 
-    private RegistryKey GetRegistryKey(RegistryInstance instance)
+    private RegistryKey? GetRegistryKey(RegistryInstance instance)
     {
         switch (instance.Scope)
         {
@@ -86,14 +136,14 @@ public class RegistryHandler() : WindowsHandler("Registry")
             case SettingScope.User:
                 return Microsoft.Win32.Registry.CurrentUser;
             default:
-                throw new NotImplementedException("Unknown settings scope");
+                return null;
         }
     }
 
     public void ReleaseInstance(ICollection<SettingsInstance> instances)
     {
         var privilegesAcquired = false;
-        foreach (var instance in instances.OfType<RegistryInstance>())
+        foreach (var instance in instances.OfType<RegistryInstance>())        
         {
             if (instance.Scope == SettingScope.User && instance.Hive != null)
             {
@@ -114,16 +164,20 @@ public class RegistryHandler() : WindowsHandler("Registry")
     public static SettingType GetSettingType(string key)
     {
         var registryType = (RegistryValueKind)Enum.Parse(typeof(RegistryValueKind), key, false);
-        return RegistryTypeMap[registryType];
+        return ConversionByValueKind[registryType].SettingType;
     }
 
-    private static readonly IDictionary<RegistryValueKind, SettingType> RegistryTypeMap = new Dictionary<RegistryValueKind, SettingType>
-    {
-        { RegistryValueKind.String, SettingType.String },
-        { RegistryValueKind.ExpandString, SettingType.ExpandString },
-        { RegistryValueKind.MultiString, SettingType.MultiString },
-        { RegistryValueKind.Binary, SettingType.Bytes },
-        { RegistryValueKind.DWord, SettingType.Int32 },
-        { RegistryValueKind.QWord, SettingType.Int64 }
-    };
+    private static readonly List<RegistryConversion> Conversions =
+    [
+        new(RegistryValueKind.String, SettingType.String, x => x, Convert.ToString),
+        new(RegistryValueKind.ExpandString, SettingType.ExpandString, x => x, Convert.ToString),
+        new(RegistryValueKind.MultiString, SettingType.MultiString, x => x, Convert.ToString),
+        new(RegistryValueKind.Binary, SettingType.Bytes, x => x == null ? null : Convert.FromBase64String(x), x => x == null ? null : Convert.ToBase64String((byte[])x)),
+        new(RegistryValueKind.DWord, SettingType.Int32, x => x == null ? null : Convert.ToInt32(x), x => x == null ? null : Convert.ToInt32(x).ToString()),
+        new(RegistryValueKind.QWord, SettingType.Int64, x => x == null ? null : Convert.ToInt64(x), x => x == null ? null : Convert.ToInt64(x).ToString())
+    ];
+    
+    private static readonly IDictionary<RegistryValueKind, RegistryConversion> ConversionByValueKind = Conversions.ToDictionary(x => x.ValueKind, x => x);
+    
+    private static readonly Dictionary<SettingType, RegistryConversion> ConversionBySettingType = Conversions.ToDictionary(x => x.SettingType);
 }
