@@ -29,7 +29,13 @@ public class WinUtilConverter
         {
             path = path.Skip(1).ToArray();
             scope = SettingScope.User;
-        } else if (path.FirstOrDefault() == "HKLM")
+        }
+        else if (path.FirstOrDefault() == "HKU")
+        {
+            path = path.Skip(1).ToArray();
+            scope = SettingScope.User;
+        }
+        else if (path.FirstOrDefault() == "HKLM")
         {
             path = path.Skip(1).ToArray();
         }
