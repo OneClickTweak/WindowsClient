@@ -6,10 +6,10 @@ using OneClickTweak.Settings.Serialization;
 namespace OneClickTweak.Service.Controllers;
 
 [ApiController]
-[Route("api/settings")]
+[Route("api")]
 public class SettingsController : ControllerBase
 {
-    [HttpGet]
+    [HttpGet("settings")]
     public IActionResult Get()
     {
         var fileName = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.UserProfile), "dev/projects/OneClickTweak/OneClickTweak.Tests/TestFiles/settings.json");

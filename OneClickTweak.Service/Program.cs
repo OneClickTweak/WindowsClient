@@ -50,10 +50,13 @@ builder.Services.AddSingleton<SettingsParser>();
 builder.Services.AddSingleton<LoaderService>();
 
 builder.Services.AddControllers();
+builder.Services.AddHttpClient();
 
 var app = builder.Build();
+
 app.UseDefaultFiles();
 app.UseStaticFiles();
 app.MapControllers();
+
 app.MapFallbackToFile("index.html");
 app.Run();
