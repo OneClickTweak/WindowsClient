@@ -9,7 +9,11 @@ using OneClickTweak.WindowsHandlers.GroupPolicy;
 using OneClickTweak.WindowsHandlers.Registry;
 using OneClickTweak.WindowsHandlers.Windows;
 
-var builder = Host.CreateApplicationBuilder(args);
+// TODO: Include web hosting API only
+var builder = WebApplication.CreateBuilder(new WebApplicationOptions
+{
+    WebRootPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.UserProfile), "dev/projects/OneClickTweakUI/build")
+});
 builder.Services.AddHostedService<Worker>();
 builder.Services.Configure<GlobalOptions>(nameof(GlobalOptions), builder.Configuration);
 
@@ -45,5 +49,11 @@ builder.Services.AddSingleton(new SettingsHandlerCollection());
 builder.Services.AddSingleton<SettingsParser>();
 builder.Services.AddSingleton<LoaderService>();
 
-var host = builder.Build();
-host.Run();
+builder.Services.AddControllers();
+
+var app = builder.Build();
+app.UseDefaultFiles();
+app.UseStaticFiles();
+app.MapControllers();
+app.MapFallbackToFile("index.html");
+app.Run();

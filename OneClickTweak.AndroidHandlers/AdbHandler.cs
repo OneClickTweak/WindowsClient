@@ -1,6 +1,7 @@
 ﻿using System.Net;
 using AdvancedSharpAdbClient;
 using AdvancedSharpAdbClient.Models;
+using Microsoft.Extensions.Logging;
 using OneClickTweak.Handlers;
 using OneClickTweak.Settings.Definition;
 using OneClickTweak.Settings.Runtime;
@@ -48,5 +49,10 @@ public class AdbHandler() : BaseHandler("ADB")
                 };   
             }
         }
+    }
+
+    public override Task<bool> Apply(SettingsInstance instance, SelectedSetting selected, ILogger logger)
+    {
+        throw new NotImplementedException();
     }
 }

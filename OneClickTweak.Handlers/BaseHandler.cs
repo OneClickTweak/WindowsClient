@@ -1,3 +1,4 @@
+using Microsoft.Extensions.Logging;
 using OneClickTweak.Settings.Definition;
 using OneClickTweak.Settings.Runtime;
 using OneClickTweak.Settings.Users;
@@ -16,6 +17,18 @@ public abstract class BaseHandler : ISettingsHandler
     public int ChangeTimeout { get; set; } = 600;
 
     public abstract IEnumerable<SettingsInstance> GetFoundInstances(IEnumerable<UserInstance> users);
+
+    public virtual Task BeginApply(ICollection<SettingsInstance> instances, ILogger logger)
+    {
+        return Task.CompletedTask;
+    }
+
+    public abstract Task<bool> Apply(SettingsInstance instance, SelectedSetting selected, ILogger logger);
+
+    public virtual Task EndApply(ICollection<SettingsInstance> instances, ILogger logger)
+    {
+        return Task.CompletedTask;
+    }
 
     public virtual bool IsVersionMatch(SettingsInstance instance, Setting item)
     {

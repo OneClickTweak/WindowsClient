@@ -73,7 +73,7 @@ public abstract class GroupPolicyObject : IDisposable
     /// </summary>
     private static readonly Guid LocalGuid = new(GetAssemblyAttribute<GuidAttribute>(Assembly.GetExecutingAssembly())!.Value);
 
-    protected IGroupPolicyObject Instance;
+    protected readonly IGroupPolicyObject Instance;
 
     static T? GetAssemblyAttribute<T>(ICustomAttributeProvider assembly) where T : Attribute
     {
@@ -202,33 +202,29 @@ public class ComputerGroupPolicyObject : GroupPolicyObject
         IsLocal = false;
     }
 
-    public static void SetPolicySetting(string registryInformation, string? settingValue, RegistryValueKind registryValueKind)
+    public static Exception? SetPolicySetting(GroupPolicySection section, string keyPath, string key, RegistryValueKind valueKind, object? value)
     {
-        var key = Key(registryInformation, out var valueName, out var section);
-
         // Thread must be STA
         Exception? exception = null;
         var t = new Thread(() =>
         {
             try
             {
-                var gpo = new ComputerGroupPolicyObject();
-                using (var rootRegistryKey = gpo.GetRootRegistryKey(section))
+                using var gpo = new ComputerGroupPolicyObject();
+                using var rootRegistryKey = gpo.GetRootRegistryKey(section);
+                // Data can't be null so we can use this value to indicate key must be deleted
+                if (value == null)
                 {
-                    // Data can't be null so we can use this value to indicate key must be delete
-                    if (settingValue == null)
+                    using var subKey = rootRegistryKey.OpenSubKey(keyPath, true);
+                    if (subKey != null)
                     {
-                        using var subKey = rootRegistryKey.OpenSubKey(key, true);
-                        if (subKey != null)
-                        {
-                            subKey.DeleteValue(valueName);
-                        }
+                        subKey.DeleteValue(key);
                     }
-                    else
-                    {
-                        using var subKey = rootRegistryKey.CreateSubKey(key);
-                        subKey.SetValue(valueName, settingValue, registryValueKind);
-                    }
+                }
+                else
+                {
+                    using var subKey = rootRegistryKey.CreateSubKey(keyPath);
+                    subKey.SetValue(key, value, valueKind);
                 }
 
                 gpo.Save();
@@ -243,54 +239,35 @@ public class ComputerGroupPolicyObject : GroupPolicyObject
         t.Start();
         t.Join();
 
-        if (exception != null)
-        {
-            throw exception;
-        }
+        return exception;
     }
 
-    public static object? GetPolicySetting(string registryInformation)
+    public static (Exception? exception, object? value) GetPolicySetting(GroupPolicySection section, string keyPath, string key)
     {
-        var key = Key(registryInformation, out var valueName, out var section);
-
         // Thread must be STA
+        Exception? exception = null;
         object? result = null;
         var t = new Thread(() =>
         {
-            var gpo = new ComputerGroupPolicyObject();
-            using var rootRegistryKey = gpo.GetRootRegistryKey(section);
-            // Data can't be null so we can use this value to indicate key must be deleted
-            using var subKey = rootRegistryKey.OpenSubKey(key, true);
-            result = subKey?.GetValue(valueName);
+            try
+            {
+                using var gpo = new ComputerGroupPolicyObject();
+                using var rootRegistryKey = gpo.GetRootRegistryKey(section);
+                // Data can't be null so we can use this value to indicate key must be deleted
+                using var subKey = rootRegistryKey.OpenSubKey(keyPath, true);
+                result = subKey?.GetValue(key);
+            }
+            catch (Exception? e)
+            {
+                exception = e;
+            }
         });
 
         t.SetApartmentState(ApartmentState.STA);
         t.Start();
         t.Join();
 
-        return result;
-    }
-
-    private static string Key(string registryInformation, out string value, out GroupPolicySection section)
-    {
-        // Parse parameter of format HKCU\Software\Policies\Microsoft\Windows\Personalization!NoChangingSoundScheme
-        var split = registryInformation.Split('!');
-        var key = split[0];
-        var hive = key.Substring(0, key.IndexOf('\\'));
-        key = key.Substring(key.IndexOf('\\') + 1);
-
-        value = split[1];
-
-        if (hive.Equals(@"HKLM", StringComparison.OrdinalIgnoreCase)
-            || hive.Equals(@"HKEY_LOCAL_MACHINE", StringComparison.OrdinalIgnoreCase))
-        {
-            section = GroupPolicySection.Machine;
-        }
-        else
-        {
-            section = GroupPolicySection.User;
-        }
-        return key;
+        return (exception, result);
     }
 
     /// <summary>

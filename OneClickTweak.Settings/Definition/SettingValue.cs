@@ -11,7 +11,7 @@ public record SettingValue
     [JsonConverter(typeof(SingleOrArrayConverter<List<string>, string>))]
     public List<string>? Name { get; set; }
 
-    /// <summary>
+    /// <summary>`
     /// Serialized value
     /// </summary>
     public string? Value { get; set; }

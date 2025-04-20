@@ -5,8 +5,10 @@ namespace OneClickTweak.Settings.Runtime;
 public class SelectedSetting
 {
     public required Setting Setting { get; init; }
-    
+
     public required SettingValue Value { get; init; }
+
+    public List<SelectedSetting>? Settings { get; init; }
 
     public override string ToString()
     {

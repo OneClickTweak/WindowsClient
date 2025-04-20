@@ -12,6 +12,9 @@
 
     <ItemGroup>
       <PackageReference Include="AdvancedSharpAdbClient" Version="3.3.13" />
+
+
+        
     </ItemGroup>
 
 </Project>
