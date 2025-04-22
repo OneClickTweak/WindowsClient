@@ -9,6 +9,7 @@
         <PublishReadyToRun>true</PublishReadyToRun>
         <UserSecretsId>dotnet-OneClickTweak.Service-0b516258-9222-4e73-b411-76046927879b</UserSecretsId>
         <ServerGarbageCollection>true</ServerGarbageCollection>
+        <ApplicationIcon>icon.ico</ApplicationIcon>
     </PropertyGroup>
 
     <ItemGroup>
